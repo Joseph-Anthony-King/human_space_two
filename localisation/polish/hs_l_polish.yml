@@ -1,0 +1,11 @@
+﻿l_polish:
+ deneb_with_sol_system_initializer_NAME:0 "Sol nie Deneb"
+ deneb_with_sol_system_initializer_DESC:0 "System modelowany po systemie słonecznym Ziemi bez systemu Deneb.\n\n$system_initializer_DESC$"
+ space_age_sol_system_initializer_NAME:0 "Wczesna epoka kosmiczna Sol"
+ space_age_sol_system_initializer_DESC:0 "System modelowany po Układzie Słonecznym Ziemi z wczesną erą kosmiczną Ludzkość cywilizacji.\n\n$system_initializer_DESC$"
+ primitive_sol_system_initializer_NAME:0 "Prymitywny Sol"
+ primitive_sol_system_initializer_DESC:0 "System modelowany po Układzie Słonecznym Ziemi z prymitywną cywilizacją ludzką.\n\n$system_initializer_DESC$"
+ sol_with_deneb_system_initializer_NAME:0 "Deneb nie Sol"
+ sol_with_deneb_system_initializer_DESC:0 "Rozpoczęcie Układu Słonecznego w Rzeczpospolitej Człowieka bez systemu Sol.\n\n$system_initializer_DESC$"
+ uncolonized_deneb_system_initializer_NAME:0 "Bez kolonizacji Deneb"
+ uncolonized_deneb_system_initializer_DESC:0 "Nowej sklonowany system Deneb bez systemu Sol.\n\n$system_initializer_DESC$"

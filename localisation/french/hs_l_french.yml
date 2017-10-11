@@ -1,0 +1,11 @@
+﻿l_french:
+ deneb_with_sol_system_initializer_NAME:0 "Sol Système non Deneb"
+ deneb_with_sol_system_initializer_DESC:0 "Système basé sur le système solaire de la Terre sans le système Deneb.\n\n$system_initializer_DESC$"
+ space_age_sol_system_initializer_NAME:0 "Système spatial de l'âge spatial initial"
+ space_age_sol_system_initializer_DESC:0 "Le système est basé sur le système solaire de la Terre avec un âge précoce civilisation humaine.\n\n$system_initializer_DESC$"
+ primitive_sol_system_initializer_NAME:0 "Système de sol primitif"
+ primitive_sol_system_initializer_DESC:0 "Système basé sur le système solaire de la Terre avec une civilisation humaine primitive.\n\n$system_initializer_DESC$"
+ sol_with_deneb_system_initializer_NAME:0 "Deneb Système non Sol"
+ sol_with_deneb_system_initializer_DESC:0 "Le système solaire de départ du Communauté humaine sans système solaire.\n\n$system_initializer_DESC$"
+ uncolonized_deneb_system_initializer_NAME:0 "Non colonisé Deneb System"
+ uncolonized_deneb_system_initializer_DESC:0 "Un système Deneb non coloré sans système Sol.\n\n$system_initializer_DESC$"

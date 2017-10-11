@@ -1,0 +1,11 @@
+﻿l_russian:
+ deneb_with_sol_system_initializer_NAME:0 "Солнечн система нет Денеб"
+ deneb_with_sol_system_initializer_DESC:0 "Система смоделированная после солнечной системы Земли без системы Денеба.\n\n$system_initializer_DESC$"
+ space_age_sol_system_initializer_NAME:0 "Солнечн система ранняя космическая эра"
+ space_age_sol_system_initializer_DESC:0 "Система смоделированная после солнечной системы Земли с ранней космической эпохой. Человеческая цивилизация.\n\n$system_initializer_DESC$"
+ primitive_sol_system_initializer_NAME:0 "Солнечн система примитивный"
+ primitive_sol_system_initializer_DESC:0 "Система смоделированная после солнечной системы Земли с примитивной человеческой цивилизацией.\n\n$system_initializer_DESC$"
+ sol_with_deneb_system_initializer_NAME:0 "Денеб система нет Солнечн"
+ sol_with_deneb_system_initializer_DESC:0 "Солнечная система Содружества Человека без системы Солнца.\n\n$system_initializer_DESC$"
+ uncolonized_deneb_system_initializer_NAME:0 "Система Денеб не колонизированный"
+ uncolonized_deneb_system_initializer_DESC:0 "Бесколлонизированная система Денеба без системы Солнца.\n\n$system_initializer_DESC$"

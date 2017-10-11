@@ -1,0 +1,8 @@
+# Triggers when the game starts
+on_game_start = {
+	events = {
+		hs.1
+		hs.2
+		hs.3
+	}
+}

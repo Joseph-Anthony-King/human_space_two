@@ -1,0 +1,12 @@
+﻿l_braz_por:
+ deneb_with_sol_system_initializer_NAME:0 "Sistema Sol no Deneb"
+ deneb_with_sol_system_initializer_DESC:0 "Sistema modelado segundo o sistema solar da Terra sem o sistema Deneb.\n\n$system_initializer_DESC$"
+ space_age_sol_system_initializer_NAME:0 "Sistema Sol inicial de idade do espaço espacial"
+ space_age_sol_system_initializer_DESC:0 "Sistema modelado segundo o sistema solar da Terra com uma idade espacial inicial Civilização humana.\n\n$system_initializer_DESC$"
+ primitive_sol_system_initializer_NAME:0 "Sistema Primitive Sol"
+ primitive_sol_system_initializer_DESC:0 "Sistema modelado segundo o sistema solar da Terra com uma civilização humana primitiva.\n\n$system_initializer_DESC$"
+ sol_with_deneb_system_initializer_NAME:0 "Sistema Deneb no Sol"
+ sol_with_deneb_system_initializer_DESC:0 "Da Comunidade do Homem sistema solar inicial sem o sistema Sol.\n\n$system_initializer_DESC$"
+ uncolonized_deneb_system_initializer_NAME:0 "Sistema Deneb não colonizado"
+ uncolonized_deneb_system_initializer_DESC:0 "Um sistema Deneb não colonizado sem o sistema Sol.\n\n$system_initializer_DESC$"
+ NAME_Commonwealth_of_Man:0 "Comunidade do Homem"

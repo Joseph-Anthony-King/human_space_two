@@ -1,0 +1,11 @@
+﻿l_english:
+ deneb_with_sol_system_initializer_NAME:0 "Sol System w/o Deneb"
+ deneb_with_sol_system_initializer_DESC:0 "System modeled after Earth's solar system without the Deneb system.\n\n$system_initializer_DESC$"
+ space_age_sol_system_initializer_NAME:0 "Early Space Age Sol System"
+ space_age_sol_system_initializer_DESC:0 "System modeled after Earth's solar system with an early space age Human civilization.\n\n$system_initializer_DESC$"
+ primitive_sol_system_initializer_NAME:0 "Primitive Sol System"
+ primitive_sol_system_initializer_DESC:0 "System modeled after Earth's solar system with an primitive Human civilization.\n\n$system_initializer_DESC$"
+ sol_with_deneb_system_initializer_NAME:0 "Deneb System w/o Sol"
+ sol_with_deneb_system_initializer_DESC:0 "The Commonwealth of Man's starting solar system without the Sol system.\n\n$system_initializer_DESC$"
+ uncolonized_deneb_system_initializer_NAME:0 "Uncolonized Deneb System"
+ uncolonized_deneb_system_initializer_DESC:0 "An uncolonized Deneb system without the Sol system.\n\n$system_initializer_DESC$"

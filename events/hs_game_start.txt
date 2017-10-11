@@ -1,0 +1,155 @@
+namespace = hs
+
+event = {
+	id = hs.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+
+        random_planet = {
+            limit = {
+                AND = {
+                    any_country = { has_country_flag = human_2 }
+                    any_country = { NOT = { any_country = { has_country_flag = human_1 } } }
+                    has_planet_flag = planet_earth
+                }                
+            }
+            change_pc = pc_nuked
+        }
+    }
+}
+
+event = {
+	id = hs.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+
+        random_planet = {
+            limit = {
+                AND = {
+                    any_country = { has_country_flag = human_1 }
+                    any_country = { NOT = { any_country = { has_country_flag = human_2 } } }
+                    has_planet_flag = planet_inferno
+                }                
+            }
+            set_name = "Deneb I"
+        }
+
+        random_planet = {
+            limit = {
+                AND = {
+                    any_country = { has_country_flag = human_1 }
+                    any_country = { NOT = { any_country = { has_country_flag = human_2 } } }
+                    has_planet_flag = planet_olympus
+                }                
+            }
+            set_name = "Deneb II"
+        }
+
+        random_planet = {
+            limit = {
+                AND = {
+                    any_country = { has_country_flag = human_1 }
+                    any_country = { NOT = { any_country = { has_country_flag = human_2 } } }
+                    has_planet_flag = planet_new_luna
+                }                
+            }
+            set_name = "Deneb IIa"
+        }
+
+        random_planet = {
+            limit = {
+                AND = {
+                    any_country = { has_country_flag = human_1 }
+                    any_country = { NOT = { any_country = { has_country_flag = human_2 } } }
+                    has_planet_flag = planet_unity
+                }                
+            }
+            set_name = "Deneb IIb"
+        }
+
+        random_planet = {
+            limit = {
+                AND = {
+                    any_country = { has_country_flag = human_1 }
+                    any_country = { NOT = { any_country = { has_country_flag = human_2 } } }
+                    has_planet_flag = planet_marble
+                }                
+            }
+            set_name = "Deneb III"
+        }
+
+        random_planet = {
+            limit = {
+                AND = {
+                    any_country = { has_country_flag = human_1 }
+                    any_country = { NOT = { any_country = { has_country_flag = human_2 } } }
+                    has_planet_flag = planet_hyperion
+                }                
+            }
+            set_name = "Deneb IV"
+        }
+
+        random_planet = {
+            limit = {
+                AND = {
+                    any_country = { has_country_flag = human_1 }
+                    any_country = { NOT = { any_country = { has_country_flag = human_2 } } }
+                    has_planet_flag = planet_helios
+                }                
+            }
+            set_name = "Deneb IVa"
+        }
+
+        random_planet = {
+            limit = {
+                AND = {
+                    any_country = { has_country_flag = human_1 }
+                    any_country = { NOT = { any_country = { has_country_flag = human_2 } } }
+                    has_planet_flag = planet_tumbleweed
+                }                
+            }
+            set_name = "Deneb V"
+        }
+
+        random_planet = {
+            limit = {
+                AND = {
+                    any_country = { has_country_flag = human_1 }
+                    any_country = { NOT = { any_country = { has_country_flag = human_2 } } }
+                    has_planet_flag = planet_jackson_s_planet
+                }                
+            }
+            set_name = "Deneb VI"
+        }
+    }
+}
+
+event = {
+	id = hs.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+
+        random_country = {
+            limit = {
+                NOT = { any_system = { has_star_flag = sol } }
+			}
+			random_system = {
+				limit = {
+					has_owner = no
+				}
+                random_list = {
+                    # Space age humans
+                    50 = { spawn_system = { initializer = "space_age_sol_system_initializer" } }
+                    # Primitive humans
+                    50 = { spawn_system = { initializer = "primitive_sol_system_initializer" } }
+                }
+			}
+        }
+    }
+}
