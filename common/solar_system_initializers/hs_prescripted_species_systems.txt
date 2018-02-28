@@ -101,13 +101,6 @@ deneb_with_sol_system_initializer = {
 								ethic = "ethic_fanatic_egalitarian"			
 							}
 
-							flags = { human_1 }
-							
-							weapon = "tech_missiles_1"
-							ftl = warp
-							
-							city_graphical_culture = "mammalian_01"
-
 							flag = {
 								icon = {
 									category = "human"
@@ -127,8 +120,10 @@ deneb_with_sol_system_initializer = {
 							type = default
 						}
 						last_created_country = {
-							set_graphical_culture = mammalian_01
+							set_graphical_culture = humanoid_01
 							set_country_flag = human_1
+							set_country_flag = human_starbase
+							save_global_event_target_as = UNoE_1
 						}
 						create_colony = {
 							owner = last_created_country
@@ -210,70 +205,66 @@ deneb_with_sol_system_initializer = {
 							type = "defense_army"
 						}
 
-						#science
-						create_fleet = {
-							effect = {
-								set_owner = last_created_country
+						system_star = {
 
-								create_ship = {
-									name = random
-									random_existing_design = science
-								}
+							#science
+							create_fleet = {
+								effect = {
+									set_owner = last_created_country
 
-								set_fleet_stance = evasive
-								set_location = PREV
-
-								owner = {
-									create_leader = {
-										type = scientist
-										sub_type = survey
-										name = random
-										species = owner_main_species
-									}
-								}
-								set_leader = last_created_leader
-							}
-						}
-
-						#constructor
-						create_fleet = {
-							effect = {
-								set_owner = last_created_country
-
-								create_ship = {
-									name = random
-									random_existing_design = constructor
-								}
-
-								set_fleet_stance = evasive
-								set_location = PREV
-							}
-						}
-
-						#military
-						create_fleet = {
-							set_take_point = yes
-							effect = {
-								set_owner = last_created_country
-
-								while = {
-									count = 3
 									create_ship = {
 										name = random
-										random_existing_design = corvette
+										random_existing_design = science
 									}
-								}
 
-								set_location = PREV
+									set_fleet_stance = evasive
+									set_location = PREV
+
+									owner = {
+										create_leader = {
+											type = scientist
+											sub_type = survey
+											name = random
+											species = owner_main_species
+										}
+									}
+									set_leader = last_created_leader
+								}
+							}
+
+							#constructor
+							create_fleet = {
+								effect = {
+									set_owner = last_created_country
+
+									create_ship = {
+										name = random
+										random_existing_design = constructor
+									}
+
+									set_fleet_stance = evasive
+									set_location = PREV
+								}
+							}
+
+							#military
+							create_fleet = {
+								set_take_point = yes
+								effect = {
+									set_owner = last_created_country
+
+									while = {
+										count = 3
+										create_ship = {
+											name = random
+											random_existing_design = corvette
+										}
+									}
+
+									set_location = PREV
+								}
 							}
 						}
-                        create_spaceport = {
-                            owner = last_created_country
-                            initial_module = "missile_weapon"
-                        }
-                        spaceport = {
-                            set_spaceport_level = 1
-                        }
 
 						random_tile = {
 							limit = { has_blocker = no has_building = no num_adjacent_tiles > 3 }
@@ -673,6 +664,18 @@ deneb_with_sol_system_initializer = {
 			orbit_distance = 7
 			orbit_angle = 115
 			has_ring = no
+		}
+	}
+
+	init_effect = {
+
+		if = {
+			has_country_flag = human_starbase
+			create_starbase = {
+				size = starbase_starport
+				module = shipyard
+				owner = last_created_country
+			}
 		}
 	}
 
@@ -787,11 +790,6 @@ space_age_sol_system_initializer = {
 							}
 
 							flags = { human_1 }
-							
-							weapon = "tech_missiles_1"
-							ftl = warp
-							
-							city_graphical_culture = "mammalian_01"
 
 							flag = {
 								icon = {
@@ -812,8 +810,10 @@ space_age_sol_system_initializer = {
 							type = default
 						}
 						last_created_country = {
-							set_graphical_culture = mammalian_01
+							set_graphical_culture = humanoid_01
 							set_country_flag = human_1
+							set_country_flag = human_starbase
+							save_global_event_target_as = UNoE_2
 						}
 						create_colony = {
 							owner = last_created_country
@@ -895,70 +895,66 @@ space_age_sol_system_initializer = {
 							type = "defense_army"
 						}
 
-						#science
-						create_fleet = {
-							effect = {
-								set_owner = last_created_country
+						system_star = {
 
-								create_ship = {
-									name = random
-									random_existing_design = science
-								}
+							#science
+							create_fleet = {
+								effect = {
+									set_owner = last_created_country
 
-								set_fleet_stance = evasive
-								set_location = PREV
-
-								owner = {
-									create_leader = {
-										type = scientist
-										sub_type = survey
-										name = random
-										species = owner_main_species
-									}
-								}
-								set_leader = last_created_leader
-							}
-						}
-
-						#constructor
-						create_fleet = {
-							effect = {
-								set_owner = last_created_country
-
-								create_ship = {
-									name = random
-									random_existing_design = constructor
-								}
-
-								set_fleet_stance = evasive
-								set_location = PREV
-							}
-						}
-
-						#military
-						create_fleet = {
-							set_take_point = yes
-							effect = {
-								set_owner = last_created_country
-
-								while = {
-									count = 3
 									create_ship = {
 										name = random
-										random_existing_design = corvette
+										random_existing_design = science
 									}
-								}
 
-								set_location = PREV
+									set_fleet_stance = evasive
+									set_location = PREV
+
+									owner = {
+										create_leader = {
+											type = scientist
+											sub_type = survey
+											name = random
+											species = owner_main_species
+										}
+									}
+									set_leader = last_created_leader
+								}
+							}
+
+							#constructor
+							create_fleet = {
+								effect = {
+									set_owner = last_created_country
+
+									create_ship = {
+										name = random
+										random_existing_design = constructor
+									}
+
+									set_fleet_stance = evasive
+									set_location = PREV
+								}
+							}
+
+							#military
+							create_fleet = {
+								set_take_point = yes
+								effect = {
+									set_owner = last_created_country
+
+									while = {
+										count = 3
+										create_ship = {
+											name = random
+											random_existing_design = corvette
+										}
+									}
+
+									set_location = PREV
+								}
 							}
 						}
-                        create_spaceport = {
-                            owner = last_created_country
-                            initial_module = "missile_weapon"
-                        }
-                        spaceport = {
-                            set_spaceport_level = 1
-                        }
 
 						random_tile = {
 							limit = { has_blocker = no has_building = no num_adjacent_tiles > 3 }
@@ -1358,6 +1354,18 @@ space_age_sol_system_initializer = {
 			orbit_distance = 7
 			orbit_angle = 115
 			has_ring = no
+		}
+	}
+
+	init_effect = {
+
+		if = {
+			has_country_flag = human_starbase
+			create_starbase = {
+				size = starbase_starport
+				module = shipyard
+				owner = last_created_country
+			}
 		}
 	}
 	
@@ -2160,11 +2168,6 @@ sol_with_deneb_system_initializer = {
 								}
 
 								flags = { human_2 }
-								
-								weapon = "tech_lasers_1"
-								ftl = wormhole
-								
-								city_graphical_culture = "mammalian_01"
 
 								flag = {
 									icon= {
@@ -2185,8 +2188,10 @@ sol_with_deneb_system_initializer = {
 								type = default
 							}
 							last_created_country = {
-								set_graphical_culture = mammalian_01
+								set_graphical_culture = humanoid_01
 								set_country_flag = human_2
+								set_country_flag = human_2_starbase
+								save_global_event_target_as = CoE
 							}
 							create_colony = {
 								owner = last_created_country
@@ -2268,69 +2273,65 @@ sol_with_deneb_system_initializer = {
 								type = "defense_army"
 							}
 
-							#science
-							create_fleet = {
-								effect = {
-									set_owner = last_created_country
+							system_star = {
 
-									create_ship = {
-										name = random
-										random_existing_design = science
-									}
+								#science
+								create_fleet = {
+									effect = {
+										set_owner = last_created_country
 
-									set_fleet_stance = evasive
-									set_location = PREV
-
-									owner = {
-										create_leader = {
-											type = scientist
-											sub_type = survey
-											name = random
-											species = owner_main_species
-										}
-									}
-									set_leader = last_created_leader
-								}
-							}
-
-							#constructor
-							create_fleet = {
-								effect = {
-									set_owner = last_created_country
-
-									create_ship = {
-										name = random
-										random_existing_design = constructor
-									}
-
-									set_fleet_stance = evasive
-									set_location = PREV
-								}
-							}
-
-							#military
-							create_fleet = {
-								set_take_point = yes
-								effect = {
-									set_owner = last_created_country
-
-									while = {
-										count = 3
 										create_ship = {
 											name = random
-											random_existing_design = corvette
+											random_existing_design = science
 										}
-									}
 
-									set_location = PREV
+										set_fleet_stance = evasive
+										set_location = PREV
+
+										owner = {
+											create_leader = {
+												type = scientist
+												sub_type = survey
+												name = random
+												species = owner_main_species
+											}
+										}
+										set_leader = last_created_leader
+									}
 								}
-							}
-							create_spaceport = {
-								owner = last_created_country
-								initial_module = "missile_weapon"
-							}
-							spaceport = {
-								set_spaceport_level = 1
+
+								#constructor
+								create_fleet = {
+									effect = {
+										set_owner = last_created_country
+
+										create_ship = {
+											name = random
+											random_existing_design = constructor
+										}
+
+										set_fleet_stance = evasive
+										set_location = PREV
+									}
+								}
+
+								#military
+								create_fleet = {
+									set_take_point = yes
+									effect = {
+										set_owner = last_created_country
+
+										while = {
+											count = 3
+											create_ship = {
+												name = random
+												random_existing_design = corvette
+											}
+										}
+
+										set_location = PREV
+									}
+								}
 							}
 
 							random_tile = {
@@ -2462,6 +2463,18 @@ sol_with_deneb_system_initializer = {
 		size = 20
 		has_ring = no
 		flags = { planet_jackson_s_planet }
+	}
+
+	init_effect = {
+
+		if = {
+			has_country_flag = human_2_starbase
+			create_starbase = {
+				size = starbase_starport
+				module = shipyard
+				owner = last_created_country
+			}
+		}
 	}
 	
 	neighbor_system = {

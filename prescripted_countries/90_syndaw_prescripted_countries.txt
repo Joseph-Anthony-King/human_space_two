@@ -38,9 +38,6 @@ tebrid = {
 	government = gov_machine_assimilator
 	civics = { "civic_machine_assimilator" "civic_machine_predictive_analysis" }
 	
-	weapon = "tech_lasers_1"
-	ftl = hyperdrive
-	
 	planet_name = "Tebri"
 	planet_class = "pc_ocean"
 	system_name = "Tebiron"
@@ -120,9 +117,6 @@ custodianship = {
 	government = gov_machine_servitor
 	civics = { "civic_machine_servitor" "civic_machine_delegated_functions" }
 	
-	weapon = "tech_missiles_1"
-	ftl = warp
-	
 	planet_name = "NAME_Earth"
 	planet_class = "pc_continental"
 	initializer = "sol_system_initializer"
@@ -187,9 +181,6 @@ xt489 = {
 	authority = "auth_machine_intelligence"
 	government = gov_machine_terminator
 	civics = { "civic_machine_terminator" "civic_machine_warbots" }
-	
-	weapon = "tech_mass_drivers_1"
-	ftl = wormhole
 	
 	planet_name = "PRESCRIPTED_planet_name_xt489"
 	planet_class = "pc_desert"

@@ -29,16 +29,13 @@ humans1 = {
 
 	flags = { human_1 custom_start_screen }
 	
-	weapon = "tech_missiles_1"
-	ftl = warp
-	
 	planet_name = "NAME_Earth"
 	planet_class = "pc_continental"
 	initializer = "sol_system_initializer"
 	system_name = "NAME_Sol"
 	
-	graphical_culture = "mammalian_01"
-	city_graphical_culture = "mammalian_01"
+	graphical_culture = "humanoid_01"
+	city_graphical_culture = "humanoid_01"
 	
 	empire_flag = {
 		icon= {
@@ -98,16 +95,13 @@ humans2 = {
 
 	flags = { human_2 custom_start_screen }
 	
-	weapon = "tech_lasers_1"
-	ftl = wormhole
-	
 	planet_name = "NAME_Unity"
 	planet_class = "pc_continental"
 	initializer = "deneb_system"
 	system_name = "NAME_Deneb"
 	
-	graphical_culture = "mammalian_01"
-	city_graphical_culture = "mammalian_01"
+	graphical_culture = "humanoid_01"
+	city_graphical_culture = "humanoid_01"
 	
 	empire_flag = {
 		icon= {
