@@ -86,7 +86,7 @@ deneb_with_sol_system_initializer = {
 						}
 						create_country = {
 							name = "NAME_United_Nations_of_Earth"
-							name_list = "HUM3"
+							name_list = "HUMAN1"
 		
 							room = "personality_federation_builders_room"
 
@@ -776,9 +776,11 @@ space_age_sol_system_initializer = {
 						}
 						create_country = {
 							name = "NAME_United_Nations_of_Earth"
-							name_list = "HUM3"
+							name_list = "HUMAN1"
 		
 							room = "personality_federation_builders_room"
+
+							ship_prefix = "UNS"
 							
 							authority = "auth_democratic"
 							civics = {
@@ -2156,7 +2158,7 @@ sol_with_deneb_system_initializer = {
 							}
 							create_country = {
 								name = "Commonwealth of Man"
-								name_list = "HUM4"
+								name_list = "HUMAN2"
 			
 								room = "personality_hegemonic_imperialists_room"
 	
