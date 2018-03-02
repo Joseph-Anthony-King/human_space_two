@@ -18,6 +18,8 @@ deneb_with_sol_system_initializer = {
 				set_star_flag = empire_cluster
 			}
 		}
+		
+		generate_home_system_resources = yes
 	}
 	
 	planet = {
@@ -87,6 +89,8 @@ deneb_with_sol_system_initializer = {
 							name_list = "HUM3"
 		
 							room = "personality_federation_builders_room"
+
+							ship_prefix = "UNS"
 							
 							authority = "auth_democratic"
 							civics = {
@@ -2041,6 +2045,8 @@ sol_with_deneb_system_initializer = {
 				set_star_flag = empire_cluster
 			}
 		}
+		
+		generate_home_system_resources = yes
 	}
 
 	flags = { empire_home_system deneb_system }
