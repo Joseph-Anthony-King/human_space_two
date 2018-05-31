@@ -6,7 +6,10 @@ deneb_with_sol_system_initializer = {
 	name = "NAME_Sol"
 	
 	class = "sc_g"
-	asteroids_distance = 145
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 145
+	}
 	flags = { empire_home_system sol_system sol }
 	
 	usage = custom_empire
@@ -698,7 +701,10 @@ space_age_sol_system_initializer = {
 	name = "NAME_Sol"
 	
 	class = "sc_g"
-	asteroids_distance = 145
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 145
+	}
 	flags = { empire_home_system sol_system sol }
 	
 	usage = custom_empire
@@ -1394,7 +1400,10 @@ primitive_sol_system_initializer = {
 	name = "NAME_Sol"
 	
 	class = "sc_g"
-	asteroids_distance = 145
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 145
+	}
 	flags = { empire_home_system sol_system sol }
 	
 	usage = custom_empire
@@ -2038,7 +2047,10 @@ primitive_sol_system_initializer = {
 sol_with_deneb_system_initializer = {
 	name = "NAME_Deneb"
 	class = "sc_a"
-	asteroids_distance = 90	
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 90
+	}
 
 	init_effect = {
 		every_neighbor_system = {
@@ -2505,7 +2517,10 @@ sol_with_deneb_system_initializer = {
 uncolonized_deneb_system_initializer = {
 	name = "NAME_Deneb"
 	class = "sc_a"
-	asteroids_distance = 90	
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 90
+	}
 
 	init_effect = {
 		every_neighbor_system = {
