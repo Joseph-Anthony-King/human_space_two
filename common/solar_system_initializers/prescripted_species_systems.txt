@@ -6,7 +6,10 @@ sol_system_initializer = {
 	name = "NAME_Sol"
 	
 	class = "sc_g"
-	asteroids_distance = 145
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 145
+	}
 	flags = { empire_home_system sol_system sol }
 	
 	usage = custom_empire
@@ -245,70 +248,6 @@ sol_system_initializer = {
 	}
 }
 
-# Neighbor Tier 1 First Colony
-sol_neighbor_t1_first_colony = {	
-	name = "NAME_Alpha_Centauri"
-	class = sc_g
-
-	init_effect = {
-		every_neighbor_system = {
-			set_star_flag = empire_cluster
-			every_neighbor_system = {
-				set_star_flag = empire_cluster
-			}
-		}
-	}
-
-	planet = {
-		name = "NAME_Alpha_Centauri_A"
-		count = 1
-		class = star
-		orbit_distance = 0
-		orbit_angle = 1
-		size = { min = 20 max = 30 }
-		has_ring = no
-	}
-	
-	change_orbit = 45
-	
-	planet = {
-		count = { min = 0 max = 2 }
-		orbit_distance = 20
-		
-		change_orbit = @base_moon_distance
-		
-		moon = {
-			count = { min = 0 max = 1 }
-			orbit_distance = 5
-		}
-	}
-	
-	planet = {
-		count = 1
-		orbit_distance = 25
-		class = ideal_planet_class
-		orbit_angle = { min = 90 max = 270 }
-		size = { min = 12 max = 18 }
-	}
-	
-	planet = {
-		count = { min = 2 max = 5 }
-		orbit_distance = 25
-		
-		change_orbit = @base_moon_distance
-		
-		moon = {			
-			count = { min = 0 max = 1 }
-			orbit_distance = 5
-		}
-	}
-	
-	neighbor_system = {
-		distance = { min = 10 max = @distance }	
-		initializer = "sol_neighbor_t2"
-	}
-}
-
 # Sol Neighbor Tier 1
 sol_neighbor_t1 = {
 	name = "NAME_Barnard's_Star"
@@ -356,11 +295,133 @@ sol_neighbor_t1 = {
 	}
 }
 
+# Neighbor Tier 1 First Colony
+sol_neighbor_t1_first_colony = {	
+	name = "NAME_Alpha_Centauri"
+	class = sc_trinary_1
+
+	init_effect = {
+		every_neighbor_system = {
+			set_star_flag = empire_cluster
+			every_neighbor_system = {
+				set_star_flag = empire_cluster
+			}
+		}
+	}
+
+	planet = {
+		name = "NAME_Alpha_Centauri_A"
+		count = 1
+		class = pc_g_star
+		orbit_distance = 0
+		orbit_angle = 1
+		size = 32
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_Alpha_Centauri_B"
+		count = 1
+		class = pc_k_star
+		orbit_distance = 320
+		orbit_angle = 40
+		size = 27
+		has_ring = no
+
+		planet = {
+			name = "NAME_Alpha_Centauri_B_I"
+			class = pc_molten
+			size = 18
+			orbit_distance = 65
+		}
+		planet = {
+			name = "NAME_Alpha_Centauri_B_II"
+			class = pc_barren
+			size = 25
+			orbit_distance = 25
+
+		}
+		planet = {
+			name = "NAME_Alpha_Centauri_B_III"
+			class = pc_gas_giant
+			size = 35
+			orbit_angle = 330
+			orbit_distance = 25
+		}
+	}
+
+	planet = {
+		name = "NAME_Proxima_Centauri"
+		count = 1
+		class = pc_m_star
+		orbit_distance = 35
+		orbit_angle = 130
+		size = 15
+		has_ring = no
+
+		planet = {
+			name = "NAME_Proxima_Centauri_I"
+			class = pc_molten
+			size = 22
+			orbit_distance = 25
+		}
+
+		planet = {
+			name = "NAME_Proxima_Centauri_II"
+			class = pc_gas_giant
+			size = 28
+			orbit_distance = 25
+		}
+	}
+	
+	change_orbit = -320
+
+	planet = {
+		count = 2
+		orbit_distance = 25
+		
+		change_orbit = @base_moon_distance
+		
+		moon = {			
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+	
+	planet = {
+		count = 1
+		orbit_distance = 30
+		class = ideal_planet_class
+		orbit_angle = { min = 90 max = 270 }
+		size = { min = 12 max = 18 }
+	}
+	
+	planet = {
+		count = 3
+		orbit_distance = 25
+		
+		change_orbit = @base_moon_distance
+		
+		moon = {			
+			count = { min = 0 max = 1 }
+			orbit_distance = 5
+		}
+	}
+	
+	neighbor_system = {
+		distance = { min = 10 max = @distance }	
+		initializer = "sol_neighbor_t2"
+	}
+}
+
 # Sol Neighbor Tier 2
 sol_neighbor_t2 = {
 	name = "NAME_Procyon"
-	class = sc_f
-	asteroids_distance = 70
+	class = sc_binary_8
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 120
+	}
 
 	init_effect = {
 		every_neighbor_system = {
@@ -374,23 +435,33 @@ sol_neighbor_t2 = {
 	planet = {
 		name = "NAME_Procyon_A"
 		count = 1
-		class = star
-		orbit_distance = 0
+		class = pc_f_star
+		orbit_distance = 30
 		orbit_angle = 1
-		size = { min = 20 max = 30 }
+		size = 35
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_Procyon_B"
+		count = 1
+		class = pc_f_star
+		orbit_distance = 0
+		orbit_angle = 125
+		size = 20
 		has_ring = no
 	}
 	
 	planet = {
 		count = 1
-		orbit_distance = 45
+		orbit_distance = 65
 	}
 	
 	change_orbit = 25
 	
 	planet = {
 		count = { min = 1 max = 3 }
-		class = random_asteroid
+		class = pc_asteroid
 		orbit_distance = 0
 		orbit_angle = { min = 0 max = 360 }
 	}
@@ -411,7 +482,7 @@ sol_neighbor_t2 = {
 # Sol Neighbor Tier 2 Second Colony
 sol_neighbor_t2_second_colony = {
 	name = "NAME_Sirius"
-	class = sc_a
+	class = sc_binary_9
 
 	init_effect = {
 		every_neighbor_system = {
@@ -425,14 +496,24 @@ sol_neighbor_t2_second_colony = {
 	planet = {
 		name = "NAME_Sirius_A"
 		count = 1
-		class = star
-		orbit_distance = 0
+		class = pc_a_star
+		orbit_distance = 30
 		orbit_angle = 1
-		size = { min = 20 max = 30 }
+		size = 35
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_Sirius_B"
+		count = 1
+		class = pc_f_star
+		orbit_distance = 0
+		orbit_angle = 120
+		size = 15
 		has_ring = no
 	}
 	
-	change_orbit = 25
+	change_orbit = 45
 	
 	planet = {
 		count = 2
@@ -483,7 +564,10 @@ sol_neighbor_t2_second_colony = {
 deneb_system = {
 	name = "NAME_Deneb"
 	class = "sc_a"
-	asteroids_distance = 90
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 90
+	}
 
 	init_effect = {
 		every_neighbor_system = {
@@ -656,8 +740,7 @@ deneb_system = {
 vultaumar_system = {
 	name = "NAME_Vultaumar"
 	class = "sc_b"
-	asteroids_distance = 0
-	flags = { vultaumar }
+	flags = { vultaumar precursor_system }
 	
 	planet = {
 		name = "NAME_Vultaumar"
@@ -670,19 +753,29 @@ vultaumar_system = {
 	
 	planet = {
 		name = "NAME_Vultaumar_Prime"
-		class = "pc_barren"
+		class = "pc_broken"
 		orbit_distance = 80
 		orbit_angle = 76
 		size = 25
 		has_ring = no
-		entity = "barren_planet_01_destroyed_entity"
 		#anomaly = "VULTAUMAR"
 		flags = { vultaum_homeworld }
 		
 		init_effect = {
+			prevent_anomaly = yes
 			create_ambient_object = {
 				type = "medium_debris_01_object"
 				location = THIS
+			}
+			add_modifier = {
+				modifier = "vultaum_homeworld"
+				days = -1
+			}
+			orbital_deposit_tile = { 
+				clear_deposits = yes
+				add_deposit = d_enormous3_engineering_deposit
+				add_deposit = d_enormous3_physics_deposit
+				add_deposit = d_enormous3_society_deposit
 			}
 			
 		}
@@ -730,6 +823,18 @@ vultaumar_system = {
 		orbit_angle = 210
 		size = 25
 		has_ring = yes
+
+		init_effect = {
+			prevent_anomaly = yes
+			add_modifier = {
+				modifier = "vultaum_minerals"
+				days = -1
+			}
+			orbital_deposit_tile = { 
+				clear_deposits = yes
+				add_deposit = d_enormous3_mineral_deposit
+			}
+		}
 	}
 	
 	planet = {
@@ -739,6 +844,18 @@ vultaumar_system = {
 		orbit_angle = 125
 		size = 40
 		has_ring = no
+
+		init_effect = {
+			prevent_anomaly = yes
+			add_modifier = {
+				modifier = "vultaum_energy"
+				days = -1
+			}
+			orbital_deposit_tile = { 
+				clear_deposits = yes
+				add_deposit = d_enormous3_energy_deposit
+			}
+		}
 		
 		moon = {
 			name = "NAME_Vultaumar_IVa"
@@ -755,7 +872,7 @@ vultaumar_system = {
 		class = "pc_gas_giant"
 		orbit_distance = 45
 		orbit_angle = 185
-		size = 50
+		size = 40
 		has_ring = yes
 	}
 }
@@ -764,8 +881,11 @@ vultaumar_system = {
 yuhtaan_system = {
 	name = "NAME_Yuhtaan"
 	class = "sc_m"
-	asteroids_distance = 125
-	flags = { yuhtaan }
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 125
+	}
+	flags = { yuhtaan precursor_system }
 	
 	planet = {
 		name = "NAME_Yuthaan"
@@ -778,16 +898,16 @@ yuhtaan_system = {
 	
 	planet = {
 		name = "NAME_Yuthaan_Majoris"
-		class = "pc_barren"
+		class = "pc_broken"
 		orbit_distance = 50
 		orbit_angle = 76
 		size = 25
 		has_ring = no
-		entity = "barren_planet_01_destroyed_entity"
 		#anomaly = "YUHTAAN"
 		flags = { yuht_homeworld }
 		
 		init_effect = {
+			prevent_anomaly = yes
 			create_ambient_object = {
 				type = "large_debris_object"
 				location = THIS
@@ -801,6 +921,16 @@ yuhtaan_system = {
 					distance = 5
 					angle = random
 				}
+			}
+			add_modifier = {
+				modifier = "yuht_homeworld"
+				days = -1
+			}
+			orbital_deposit_tile = { 
+				clear_deposits = yes
+				add_deposit = d_enormous3_engineering_deposit
+				add_deposit = d_enormous3_physics_deposit
+				add_deposit = d_enormous3_society_deposit
 			}
 		}
 		
@@ -846,6 +976,18 @@ yuhtaan_system = {
 		orbit_angle = -95
 		size = 5
 		has_ring = no
+
+		init_effect = {
+			prevent_anomaly = yes
+			add_modifier = {
+				modifier = "yuht_minerals"
+				days = -1
+			}
+			orbital_deposit_tile = { 
+				clear_deposits = yes
+				add_deposit = d_enormous3_mineral_deposit
+			}
+		}
 	}
 	
 	planet = {
@@ -899,6 +1041,18 @@ yuhtaan_system = {
 		size = 30
 		has_ring = yes
 		change_orbit = 6
+
+		init_effect = {
+			prevent_anomaly = yes
+			add_modifier = {
+				modifier = "yuht_energy"
+				days = -1
+			}
+			orbital_deposit_tile = { 
+				clear_deposits = yes
+				add_deposit = d_enormous3_energy_deposit
+			}
+		}
 		
 		moon = {
 			name = "NAME_Yuthaan_Va"
@@ -915,8 +1069,11 @@ yuhtaan_system = {
 fen_habbanis_system = {
 	name = "NAME_Fen_Habbanis"
 	class = "sc_g"
-	asteroids_distance = 85
-	flags = { fen_habbanis }
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 85
+	}
+	flags = { fen_habbanis precursor_system }
 	
 	planet = {
 		name = "NAME_Fen_Habbanis"
@@ -951,6 +1108,18 @@ fen_habbanis_system = {
 		orbit_angle = -210
 		size = 5
 		has_ring = no
+
+		init_effect = {
+			prevent_anomaly = yes
+			add_modifier = {
+				modifier = "first_league_minerals"
+				days = -1
+			}
+			orbital_deposit_tile = { 
+				clear_deposits = yes
+				add_deposit = d_enormous3_mineral_deposit
+			}
+		}
 	}
 	
 	planet = {
@@ -978,6 +1147,20 @@ fen_habbanis_system = {
 		has_ring = no
 		#anomaly = "FEN_HABBANIS"
 		flags = { first_league_homeworld }
+
+		init_effect = {
+			prevent_anomaly = yes
+			add_modifier = {
+				modifier = "first_league_homeworld"
+				days = -1
+			}
+			orbital_deposit_tile = { 
+				clear_deposits = yes
+				add_deposit = d_enormous3_engineering_deposit
+				add_deposit = d_enormous3_physics_deposit
+				add_deposit = d_enormous3_society_deposit
+			}
+		}
 	}
 	
 	planet = {
@@ -1005,6 +1188,18 @@ fen_habbanis_system = {
 		orbit_angle = -160
 		size = 35
 		has_ring = no
+
+		init_effect = {
+			prevent_anomaly = yes
+			add_modifier = {
+				modifier = "first_league_energy"
+				days = -1
+			}
+			orbital_deposit_tile = { 
+				clear_deposits = yes
+				add_deposit = d_enormous3_energy_deposit
+			}
+		}
 	}	
 }
 
@@ -1012,8 +1207,11 @@ fen_habbanis_system = {
 irass_system = {
 	name = "NAME_Irass"
 	class = "sc_f"
-	asteroids_distance = 125
-	flags = { irass }
+	asteroid_belt = {
+		type = rocky_asteroid_belt
+		radius = 125
+	}
+	flags = { irass precursor_system }
 	
 	planet = {
 		class = star
@@ -1045,6 +1243,18 @@ irass_system = {
 		orbit_angle = 70
 		size = 20
 		has_ring = no
+
+		init_effect = {
+			prevent_anomaly = yes
+			add_modifier = {
+				modifier = "irassian_minerals"
+				days = -1
+			}
+			orbital_deposit_tile = { 
+				clear_deposits = yes
+				add_deposit = d_enormous3_mineral_deposit
+			}
+		}
 	}
 	
 	planet = {
@@ -1098,6 +1308,20 @@ irass_system = {
 			has_ring = no
 			#anomaly = "IRASSIA"
 			flags = { irassian_homeworld }
+
+			init_effect = {
+				prevent_anomaly = yes
+				add_modifier = {
+					modifier = "irassian_homeworld"
+					days = -1
+				}
+				orbital_deposit_tile = { 
+					clear_deposits = yes
+					add_deposit = d_enormous3_engineering_deposit
+					add_deposit = d_enormous3_physics_deposit
+					add_deposit = d_enormous3_society_deposit
+				}
+			}
 		}
 	}
 	
@@ -1135,6 +1359,18 @@ irass_system = {
 		orbit_angle = 145
 		size = 25
 		has_ring = no
+
+		init_effect = {
+			prevent_anomaly = yes
+			add_modifier = {
+				modifier = "irassian_energy"
+				days = -1
+			}
+			orbital_deposit_tile = { 
+				clear_deposits = yes
+				add_deposit = d_enormous3_energy_deposit
+			}
+		}
 	}
 	
 	planet = {
@@ -1151,7 +1387,7 @@ irass_system = {
 cybrex_system = {
 	name = "NAME_Cybrex_Alpha"
 	class = "sc_g"
-	flags = { cybrex }
+	flags = { cybrex precursor_system }
 	
 	planet = {
 		class = star
