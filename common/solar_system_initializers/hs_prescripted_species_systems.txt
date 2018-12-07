@@ -4,14 +4,19 @@
 ### Sol System
 deneb_with_sol_system_initializer = {
 	name = "NAME_Sol"
-	
+
 	class = "sc_g"
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 145
 	}
+	asteroid_belt = {
+		type = icy_asteroid_belt
+		radius = 290
+	}
+
 	flags = { empire_home_system sol_system sol }
-	
+
 	usage = custom_empire
 
 	init_effect = {
@@ -21,10 +26,10 @@ deneb_with_sol_system_initializer = {
 				set_star_flag = empire_cluster
 			}
 		}
-		
+
 		generate_home_system_resources = yes
 	}
-	
+
 	planet = {
 		name = "NAME_Sol"
 		class = "pc_g_star"
@@ -33,7 +38,7 @@ deneb_with_sol_system_initializer = {
 		size = 30
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_Mercury"
 		class = "pc_molten"
@@ -42,7 +47,7 @@ deneb_with_sol_system_initializer = {
 		size = 10
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_Venus"
 		class = "pc_toxic"
@@ -51,7 +56,7 @@ deneb_with_sol_system_initializer = {
 		size = 20
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_Earth"
 		class = "pc_continental"
@@ -64,17 +69,18 @@ deneb_with_sol_system_initializer = {
 		tile_blockers = none
 		modifiers = none
 		flags = { planet_earth }
-		
+
 		init_effect = {
 			prevent_anomaly = yes
 		}
-		
+
 		init_effect = {
 			if = {
 				limit = { NOT = { any_country = { has_country_flag = human_1 } } }
 				random_list = {
 					# Space Age
 					80 = {
+						generate_empire_home_planet = yes
 						create_species = {
 							name = Human
 							plural = Humans
@@ -83,29 +89,31 @@ deneb_with_sol_system_initializer = {
 							homeworld = THIS
 							traits = {
 								trait = "trait_adaptive"
-								trait = "trait_nomadic"	
+								trait = "trait_nomadic"
 								trait = "trait_wasteful"
 							}
 						}
+
 						create_country = {
 							name = "NAME_United_Nations_of_Earth"
 							name_list = "HUMAN1"
-		
+
 							room = "personality_federation_builders_room"
 
 							ship_prefix = "UNS"
-							
+
 							authority = "auth_democratic"
+
 							civics = {
 								civic = civic_beacon_of_liberty
 								civic = civic_idealistic_foundation
 							}
 							government = gov_representative_democracy
-							
+
 							species = last_created
 							ethos = {
 								ethic = "ethic_xenophile"
-								ethic = "ethic_fanatic_egalitarian"			
+								ethic = "ethic_fanatic_egalitarian"
 							}
 
 							flag = {
@@ -125,7 +133,42 @@ deneb_with_sol_system_initializer = {
                                 }
 							}
 							type = default
+							effect = {
+								add_resource = {
+									minerals = 200
+									energy = 200
+									food = 200
+									alloys = 100
+									consumer_goods = 100
+									influence = 100
+								}
+							}
 						}
+
+						while = {
+							count = 23
+							create_pop = {
+								species = last_created
+							}
+						}
+						set_owner = last_created_country
+						set_capital = yes
+						add_district = district_city
+						add_district = district_city
+						add_district = district_city
+						add_district = district_city
+						add_district = district_farming
+						add_district = district_farming
+						add_district = district_farming
+						add_district = district_mining
+						add_district = district_mining
+						add_district = district_generator
+						add_district = district_generator
+						add_building = building_capital
+						add_building = building_research_lab_1
+						add_building = building_foundry_1
+						add_building = building_factory_1
+
 						last_created_country = {
 							set_graphical_culture = humanoid_01
 							set_country_flag = human_1
@@ -137,50 +180,10 @@ deneb_with_sol_system_initializer = {
 							species = last_created
 							ethos = {
 								ethic = "ethic_xenophile"
-								ethic = "ethic_fanatic_egalitarian"			
+								ethic = "ethic_fanatic_egalitarian"
 							}
 						}
-						every_tile = {
-							limit = {
-								has_blocker = yes
-							}
-							remove_blocker = yes
-						}
-						random_tile = {
-							limit = { has_building = "building_colony_shelter" }
-							remove_building = yes
-						}				
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_blocker = "tb_failing_infrastructure"
-							set_deposit = d_engineering_deposit			
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_blocker = "tb_failing_infrastructure"
-							set_deposit = d_society_deposit			
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_blocker = "tb_failing_infrastructure"
-							set_deposit = d_physics_deposit			
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_blocker = "tb_decrepit_dwellings"
-							set_deposit = d_rich_energy_deposit				
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_blocker = "tb_decrepit_dwellings"
-							set_deposit = d_rich_farmland_deposit				
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_blocker = "tb_decrepit_dwellings"
-							set_deposit = d_rich_mineral_deposit			
-						}
-										
+
 						create_army = {
 							name = "1st Planetary Guard"
 							owner = last_created
@@ -273,73 +276,6 @@ deneb_with_sol_system_initializer = {
 							}
 						}
 
-						random_tile = {
-							limit = { has_blocker = no has_building = no num_adjacent_tiles > 3 }
-							set_building = "building_capital_1"
-							set_deposit = d_energy_deposit				
-							random_neighboring_tile = {					
-							}		
-						}
-
-						random_tile = {
-                            limit = { has_blocker = no has_building = no }
-                            set_building = "building_hydroponics_farm_1"
-                            set_deposit = d_rich_farmland_deposit
-                        }
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_building = "building_hydroponics_farm_1"
-							set_deposit = d_rich_farmland_deposit						
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_building = "building_power_plant_1"
-							set_deposit = d_rich_energy_deposit					
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_building = "building_power_plant_1"
-							set_deposit = d_rich_energy_deposit					
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_building = "building_mining_network_1"
-							set_deposit = d_rich_mineral_deposit
-						}	
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_building = "building_mining_network_1"
-							set_deposit = d_rich_mineral_deposit
-						}
-
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_building = "building_basic_science_lab_1"
-							random_list = {
-								33 = { 
-									set_deposit = d_engineering_deposit										
-								}
-								33 = { 
-									set_deposit = d_society_deposit											
-								}
-								33 = { 
-									set_deposit = d_physics_deposit											
-								}					
-							}					
-						}
-						while = {
-							count = 8
-							random_tile = {
-								limit = {
-									has_building = yes
-									has_grown_pop = no
-									has_growing_pop = no
-								}
-								create_pop = {
-									species = last_created
-								}
-							}
-						}
 						last_created_country = {
 							capital_scope = { set_name = "NAME_Earth" }
 						}
@@ -354,13 +290,15 @@ deneb_with_sol_system_initializer = {
 							homeworld = THIS
 							traits = {
 								trait = "trait_adaptive"
-								trait = "trait_nomadic"	
+								trait = "trait_nomadic"
 								trait = "trait_wasteful"
 							}
 						}
+
 						create_country = {
 							name = random
 							authority = random
+							day_zero_contact = no
 							civics = {
 								civic = civic_increasing_urbanization
 								civic = civic_atmospheric_pollution
@@ -368,7 +306,7 @@ deneb_with_sol_system_initializer = {
 							species = last_created
 							ethos = {
 								ethic = "ethic_xenophile"
-								ethic = "ethic_fanatic_egalitarian"			
+								ethic = "ethic_fanatic_egalitarian"
 							}
 
 							flag = {
@@ -389,6 +327,7 @@ deneb_with_sol_system_initializer = {
 							}
 							type = primitive
 						}
+
 						last_created_country = {
 							set_graphical_culture = industrial_01
 							set_country_flag = early_space_age
@@ -396,43 +335,17 @@ deneb_with_sol_system_initializer = {
 							set_country_flag = human_1
 							set_primitive_age = early_space_age
 						}
-						create_colony = {
-							owner = last_created_country
-							species = last_created
-							ethos = {
-								ethic = "ethic_xenophile"
-								ethic = "ethic_fanatic_egalitarian"			
-							}
-						}
-						every_tile = {
-							limit = {
-								has_blocker = yes
-							}
-							remove_blocker = yes
-						}
-						random_tile = {
-							limit = { has_building = "building_colony_shelter" }
-							remove_building = yes
-						}
+
 						while = {
-							count = 3			
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_building = no
-									has_grown_pop = no
-								}
-								set_blocker = tb_decrepit_dwellings
+							count = 15
+							create_pop = {
+								species = last_created
 							}
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_building = no
-									has_grown_pop = no
-								}
-								set_blocker = tb_failing_infrastructure		
-							}				
-						}					
+						}
+						set_owner = last_created_country
+
+						create_primitive_blockers = yes
+
 						create_army = {
 							name = "US Armed Forces West"
 							owner = last_created
@@ -464,7 +377,7 @@ deneb_with_sol_system_initializer = {
 							type = "postatomic_army"
 						}
 						create_fleet = {
-							name = "NAME_ISS_II" 
+							name = "NAME_ISS_II"
 							effect = {
 								set_owner = last_created_country
 								create_ship = {
@@ -474,43 +387,13 @@ deneb_with_sol_system_initializer = {
 								set_location = PREV
 							}
 						}
-						while = {
-							count = 7
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_grown_pop = no
-									has_growing_pop = no
-								}
-								create_pop = {
-									species = last_created
-								}
-							}
-						}
-						while = {
-							count = 4
-							random_tile = {
-								limit = { 
-									has_blocker = no 
-									has_building = no 
-									has_grown_pop = yes
-								}
-								set_building = "building_primitive_factory"
-								set_deposit = d_mineral_deposit
-							}
-						}
-						while = {
-							count = 4
-							random_tile = {
-								limit = { 
-									has_blocker = no 
-									has_building = no 
-									has_grown_pop = yes
-								}
-								set_building = "building_primitive_farm"
-								set_deposit = d_farmland_deposit
-							}
-						}
+						add_building = building_primitive_farm
+						add_building = building_primitive_factory
+						add_building = building_primitive_mine
+						add_building = building_primitive_power_plant
+						add_building = building_primitive_capital
+						add_building = building_urban_dwellings
+
 						last_created_country = {
 							capital_scope = { set_name = "NAME_Earth" }
 						}
@@ -521,7 +404,7 @@ deneb_with_sol_system_initializer = {
 				}
 			}
 		}
-		
+
 		moon = {
 			name = "NAME_Luna"
 			class = "pc_barren_cold"
@@ -532,7 +415,7 @@ deneb_with_sol_system_initializer = {
 			entity = "cold_barren_planet_luna_entity"
 		}
 	}
-	
+
 	planet = {
 		name = "NAME_Mars"
 		class = "pc_barren"
@@ -543,7 +426,7 @@ deneb_with_sol_system_initializer = {
 		entity = "barren_planet_mars_entity"
 		anomaly = "terraforming_candidate_category"
 	}
-	
+
 	planet = {
 		name = "NAME_1_Ceres"
 		class = "pc_asteroid"
@@ -552,7 +435,7 @@ deneb_with_sol_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_2_Pallas"
 		class = "pc_asteroid"
@@ -561,7 +444,7 @@ deneb_with_sol_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_3_Juno"
 		class = "pc_asteroid"
@@ -570,7 +453,7 @@ deneb_with_sol_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_4_Vesta"
 		class = "pc_asteroid"
@@ -579,7 +462,7 @@ deneb_with_sol_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_Jupiter"
 		class = "pc_gas_giant"
@@ -589,7 +472,7 @@ deneb_with_sol_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_jupiter_entity"
 		change_orbit = 6
-		
+
 		moon = {
 			name = "NAME_Io"
 			class = "pc_molten"
@@ -623,7 +506,7 @@ deneb_with_sol_system_initializer = {
 			has_ring = no
 		}
 	}
-	
+
 	planet = {
 		name = "NAME_Saturn"
 		class = "pc_gas_giant"
@@ -633,7 +516,7 @@ deneb_with_sol_system_initializer = {
 		has_ring = yes
 		entity = "gas_giant_05_entity"
 		change_orbit = 7
-		
+
 		moon = {
 			name = "NAME_Titan"
 			class = "pc_frozen"
@@ -643,7 +526,7 @@ deneb_with_sol_system_initializer = {
 			has_ring = no
 		}
 	}
-	
+
 	planet = {
 		name = "NAME_Uranus"
 		class = "pc_gas_giant"
@@ -653,7 +536,7 @@ deneb_with_sol_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_03_entity"
 	}
-	
+
 	planet = {
 		name = "NAME_Neptune"
 		class = "pc_gas_giant"
@@ -663,7 +546,7 @@ deneb_with_sol_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_02_entity"
 		change_orbit = 4
-		
+
 		moon = {
 			name = "NAME_Triton"
 			class = "pc_frozen"
@@ -672,6 +555,42 @@ deneb_with_sol_system_initializer = {
 			orbit_angle = 115
 			has_ring = no
 		}
+	}
+
+	planet = {
+		name = "NAME_134340_Pluto"
+		class = "pc_asteroid"
+		orbit_distance = 30
+		orbit_angle = -210
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_136472_Makemake"
+		class = "pc_ice_asteroid"
+		orbit_distance = 0
+		orbit_angle = -95
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_136108_Haumea"
+		class = "pc_ice_asteroid"
+		orbit_distance = 0
+		orbit_angle = 285
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_20000_Varuna"
+		class = "pc_ice_asteroid"
+		orbit_distance = 0
+		orbit_angle = -80
+		size = 5
+		has_ring = no
 	}
 
 	init_effect = {
@@ -687,26 +606,37 @@ deneb_with_sol_system_initializer = {
 	}
 
 	neighbor_system = {
-		distance = { min = 10 max = @distance }	
-		initializer = "sol_neighbor_t1_first_colony"
-	}	
-	neighbor_system = {
-		distance = { min = 10 max = @distance }	
+		distance = { min = 10 max = @distance }
 		initializer = "sol_neighbor_t1"
+	}
+	neighbor_system = {
+		trigger = { num_guaranteed_colonies >= 1 }
+		distance = { min = 10 max = @distance }
+		initializer = "sol_neighbor_t1_first_colony"
+	}
+	neighbor_system = {
+		trigger = { num_guaranteed_colonies = 0 }
+		distance = { min = 10 max = @distance }
+		initializer = "sol_neighbor_t1_no_guaranteed_colony"
 	}
 }
 
 ### Sol System
 space_age_sol_system_initializer = {
 	name = "NAME_Sol"
-	
+
 	class = "sc_g"
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 145
 	}
+	asteroid_belt = {
+		type = icy_asteroid_belt
+		radius = 290
+	}
+
 	flags = { empire_home_system sol_system sol }
-	
+
 	usage = custom_empire
 
 	init_effect = {
@@ -717,7 +647,7 @@ space_age_sol_system_initializer = {
 			}
 		}
 	}
-	
+
 	planet = {
 		name = "NAME_Sol"
 		class = "pc_g_star"
@@ -726,7 +656,7 @@ space_age_sol_system_initializer = {
 		size = 30
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_Mercury"
 		class = "pc_molten"
@@ -735,7 +665,7 @@ space_age_sol_system_initializer = {
 		size = 10
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_Venus"
 		class = "pc_toxic"
@@ -744,7 +674,7 @@ space_age_sol_system_initializer = {
 		size = 20
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_Earth"
 		class = "pc_continental"
@@ -757,17 +687,19 @@ space_age_sol_system_initializer = {
 		tile_blockers = none
 		modifiers = none
 		flags = { planet_earth }
-		
+
 		init_effect = {
 			prevent_anomaly = yes
 		}
-		
+
 		init_effect = {
 			if = {
 				limit = { NOT = { any_country = { has_country_flag = human_1 } } }
 				random_list = {
 					# Space Age
 					80 = {
+						generate_empire_home_planet = yes
+
 						create_species = {
 							name = Human
 							plural = Humans
@@ -776,32 +708,32 @@ space_age_sol_system_initializer = {
 							homeworld = THIS
 							traits = {
 								trait = "trait_adaptive"
-								trait = "trait_nomadic"	
+								trait = "trait_nomadic"
 								trait = "trait_wasteful"
 							}
 						}
+
 						create_country = {
 							name = "NAME_United_Nations_of_Earth"
 							name_list = "HUMAN1"
-		
+
 							room = "personality_federation_builders_room"
 
 							ship_prefix = "UNS"
-							
+
 							authority = "auth_democratic"
+
 							civics = {
 								civic = civic_beacon_of_liberty
 								civic = civic_idealistic_foundation
 							}
 							government = gov_representative_democracy
-							
+
 							species = last_created
 							ethos = {
 								ethic = "ethic_xenophile"
-								ethic = "ethic_fanatic_egalitarian"			
+								ethic = "ethic_fanatic_egalitarian"
 							}
-
-							flags = { human_1 }
 
 							flag = {
 								icon = {
@@ -820,62 +752,58 @@ space_age_sol_system_initializer = {
                                 }
 							}
 							type = default
+							effect = {
+								add_resource = {
+									minerals = 200
+									energy = 200
+									food = 200
+									alloys = 100
+									consumer_goods = 100
+									influence = 100
+								}
+							}
 						}
+
 						last_created_country = {
 							set_graphical_culture = humanoid_01
 							set_country_flag = human_1
 							set_country_flag = human_starbase
-							save_global_event_target_as = UNoE_2
+							save_global_event_target_as = UNoE_1
 						}
+
+						while = {
+							count = 23
+							create_pop = {
+								species = event_target:human_species
+							}
+						}
+						set_owner = last_created_country
+						set_capital = yes
+						add_district = district_city
+						add_district = district_city
+						add_district = district_city
+						add_district = district_city
+						add_district = district_farming
+						add_district = district_farming
+						add_district = district_farming
+						add_district = district_mining
+						add_district = district_mining
+						add_district = district_generator
+						add_district = district_generator
+						add_building = building_capital
+						add_building = building_research_lab_1
+						add_building = building_foundry_1
+						add_building = building_factory_1
+
 						create_colony = {
 							owner = last_created_country
 							species = last_created
 							ethos = {
 								ethic = "ethic_xenophile"
-								ethic = "ethic_fanatic_egalitarian"			
+								ethic = "ethic_fanatic_egalitarian"
 							}
 						}
-						every_tile = {
-							limit = {
-								has_blocker = yes
-							}
-							remove_blocker = yes
-						}
-						random_tile = {
-							limit = { has_building = "building_colony_shelter" }
-							remove_building = yes
-						}				
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_blocker = "tb_failing_infrastructure"
-							set_deposit = d_engineering_deposit			
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_blocker = "tb_failing_infrastructure"
-							set_deposit = d_society_deposit			
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_blocker = "tb_failing_infrastructure"
-							set_deposit = d_physics_deposit			
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_blocker = "tb_decrepit_dwellings"
-							set_deposit = d_rich_energy_deposit				
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_blocker = "tb_decrepit_dwellings"
-							set_deposit = d_rich_farmland_deposit				
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_blocker = "tb_decrepit_dwellings"
-							set_deposit = d_rich_mineral_deposit			
-						}
-										
+
 						create_army = {
 							name = "1st Planetary Guard"
 							owner = last_created
@@ -968,73 +896,6 @@ space_age_sol_system_initializer = {
 							}
 						}
 
-						random_tile = {
-							limit = { has_blocker = no has_building = no num_adjacent_tiles > 3 }
-							set_building = "building_capital_1"
-							set_deposit = d_energy_deposit				
-							random_neighboring_tile = {					
-							}		
-						}
-
-						random_tile = {
-                            limit = { has_blocker = no has_building = no }
-                            set_building = "building_hydroponics_farm_1"
-                            set_deposit = d_rich_farmland_deposit
-                        }
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_building = "building_hydroponics_farm_1"
-							set_deposit = d_rich_farmland_deposit						
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_building = "building_power_plant_1"
-							set_deposit = d_rich_energy_deposit					
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_building = "building_power_plant_1"
-							set_deposit = d_rich_energy_deposit					
-						}
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_building = "building_mining_network_1"
-							set_deposit = d_rich_mineral_deposit
-						}	
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_building = "building_mining_network_1"
-							set_deposit = d_rich_mineral_deposit
-						}
-
-						random_tile = {
-							limit = { has_blocker = no has_building = no }
-							set_building = "building_basic_science_lab_1"
-							random_list = {
-								33 = { 
-									set_deposit = d_engineering_deposit										
-								}
-								33 = { 
-									set_deposit = d_society_deposit											
-								}
-								33 = { 
-									set_deposit = d_physics_deposit											
-								}					
-							}					
-						}
-						while = {
-							count = 8
-							random_tile = {
-								limit = {
-									has_building = yes
-									has_grown_pop = no
-									has_growing_pop = no
-								}
-								create_pop = {
-									species = last_created
-								}
-							}
-						}
 						last_created_country = {
 							capital_scope = { set_name = "NAME_Earth" }
 						}
@@ -1049,13 +910,15 @@ space_age_sol_system_initializer = {
 							homeworld = THIS
 							traits = {
 								trait = "trait_adaptive"
-								trait = "trait_nomadic"	
+								trait = "trait_nomadic"
 								trait = "trait_wasteful"
 							}
 						}
+
 						create_country = {
 							name = random
 							authority = random
+							day_zero_contact = no
 							civics = {
 								civic = civic_increasing_urbanization
 								civic = civic_atmospheric_pollution
@@ -1063,7 +926,7 @@ space_age_sol_system_initializer = {
 							species = last_created
 							ethos = {
 								ethic = "ethic_xenophile"
-								ethic = "ethic_fanatic_egalitarian"			
+								ethic = "ethic_fanatic_egalitarian"
 							}
 
 							flag = {
@@ -1084,6 +947,7 @@ space_age_sol_system_initializer = {
 							}
 							type = primitive
 						}
+
 						last_created_country = {
 							set_graphical_culture = industrial_01
 							set_country_flag = early_space_age
@@ -1091,43 +955,10 @@ space_age_sol_system_initializer = {
 							set_country_flag = human_1
 							set_primitive_age = early_space_age
 						}
-						create_colony = {
-							owner = last_created_country
-							species = last_created
-							ethos = {
-								ethic = "ethic_xenophile"
-								ethic = "ethic_fanatic_egalitarian"			
-							}
-						}
-						every_tile = {
-							limit = {
-								has_blocker = yes
-							}
-							remove_blocker = yes
-						}
-						random_tile = {
-							limit = { has_building = "building_colony_shelter" }
-							remove_building = yes
-						}
-						while = {
-							count = 3			
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_building = no
-									has_grown_pop = no
-								}
-								set_blocker = tb_decrepit_dwellings
-							}
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_building = no
-									has_grown_pop = no
-								}
-								set_blocker = tb_failing_infrastructure		
-							}				
-						}					
+						set_owner = last_created_country
+
+						create_primitive_blockers = yes
+
 						create_army = {
 							name = "US Armed Forces West"
 							owner = last_created
@@ -1159,7 +990,7 @@ space_age_sol_system_initializer = {
 							type = "postatomic_army"
 						}
 						create_fleet = {
-							name = "NAME_ISS_II" 
+							name = "NAME_ISS_II"
 							effect = {
 								set_owner = last_created_country
 								create_ship = {
@@ -1169,43 +1000,20 @@ space_age_sol_system_initializer = {
 								set_location = PREV
 							}
 						}
+
 						while = {
-							count = 7
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_grown_pop = no
-									has_growing_pop = no
-								}
-								create_pop = {
-									species = last_created
-								}
+							count = 15
+							create_pop = {
+								species = last_created
 							}
 						}
-						while = {
-							count = 4
-							random_tile = {
-								limit = { 
-									has_blocker = no 
-									has_building = no 
-									has_grown_pop = yes
-								}
-								set_building = "building_primitive_factory"
-								set_deposit = d_mineral_deposit
-							}
-						}
-						while = {
-							count = 4
-							random_tile = {
-								limit = { 
-									has_blocker = no 
-									has_building = no 
-									has_grown_pop = yes
-								}
-								set_building = "building_primitive_farm"
-								set_deposit = d_farmland_deposit
-							}
-						}
+						add_building = building_primitive_farm
+						add_building = building_primitive_factory
+						add_building = building_primitive_mine
+						add_building = building_primitive_power_plant
+						add_building = building_primitive_capital
+						add_building = building_urban_dwellings
+
 						last_created_country = {
 							capital_scope = { set_name = "NAME_Earth" }
 						}
@@ -1216,7 +1024,7 @@ space_age_sol_system_initializer = {
 				}
 			}
 		}
-		
+
 		moon = {
 			name = "NAME_Luna"
 			class = "pc_barren_cold"
@@ -1227,7 +1035,7 @@ space_age_sol_system_initializer = {
 			entity = "cold_barren_planet_luna_entity"
 		}
 	}
-	
+
 	planet = {
 		name = "NAME_Mars"
 		class = "pc_barren"
@@ -1238,7 +1046,7 @@ space_age_sol_system_initializer = {
 		entity = "barren_planet_mars_entity"
 		anomaly = "terraforming_candidate_category"
 	}
-	
+
 	planet = {
 		name = "NAME_1_Ceres"
 		class = "pc_asteroid"
@@ -1247,7 +1055,7 @@ space_age_sol_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_2_Pallas"
 		class = "pc_asteroid"
@@ -1256,7 +1064,7 @@ space_age_sol_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_3_Juno"
 		class = "pc_asteroid"
@@ -1265,7 +1073,7 @@ space_age_sol_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_4_Vesta"
 		class = "pc_asteroid"
@@ -1274,7 +1082,7 @@ space_age_sol_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_Jupiter"
 		class = "pc_gas_giant"
@@ -1284,7 +1092,7 @@ space_age_sol_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_jupiter_entity"
 		change_orbit = 6
-		
+
 		moon = {
 			name = "NAME_Io"
 			class = "pc_molten"
@@ -1318,7 +1126,7 @@ space_age_sol_system_initializer = {
 			has_ring = no
 		}
 	}
-	
+
 	planet = {
 		name = "NAME_Saturn"
 		class = "pc_gas_giant"
@@ -1328,7 +1136,7 @@ space_age_sol_system_initializer = {
 		has_ring = yes
 		entity = "gas_giant_05_entity"
 		change_orbit = 7
-		
+
 		moon = {
 			name = "NAME_Titan"
 			class = "pc_frozen"
@@ -1338,7 +1146,7 @@ space_age_sol_system_initializer = {
 			has_ring = no
 		}
 	}
-	
+
 	planet = {
 		name = "NAME_Uranus"
 		class = "pc_gas_giant"
@@ -1348,7 +1156,7 @@ space_age_sol_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_03_entity"
 	}
-	
+
 	planet = {
 		name = "NAME_Neptune"
 		class = "pc_gas_giant"
@@ -1358,7 +1166,7 @@ space_age_sol_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_02_entity"
 		change_orbit = 4
-		
+
 		moon = {
 			name = "NAME_Triton"
 			class = "pc_frozen"
@@ -1367,6 +1175,42 @@ space_age_sol_system_initializer = {
 			orbit_angle = 115
 			has_ring = no
 		}
+	}
+
+	planet = {
+		name = "NAME_134340_Pluto"
+		class = "pc_asteroid"
+		orbit_distance = 30
+		orbit_angle = -210
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_136472_Makemake"
+		class = "pc_ice_asteroid"
+		orbit_distance = 0
+		orbit_angle = -95
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_136108_Haumea"
+		class = "pc_ice_asteroid"
+		orbit_distance = 0
+		orbit_angle = 285
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		name = "NAME_20000_Varuna"
+		class = "pc_ice_asteroid"
+		orbit_distance = 0
+		orbit_angle = -80
+		size = 5
+		has_ring = no
 	}
 
 	init_effect = {
@@ -1380,17 +1224,23 @@ space_age_sol_system_initializer = {
 			}
 		}
 	}
-	
+
 	neighbor_system = {
-		distance = { min = 10 max = @distance }	
-		initializer = "sol_neighbor_t1_first_colony"
-	}
-	neighbor_system = {
-		distance = { min = 10 max = @distance }	
+		distance = { min = 10 max = @distance }
 		initializer = "sol_neighbor_t1"
 	}
 	neighbor_system = {
-		distance = { min = 50 max = 60 }	
+		trigger = { num_guaranteed_colonies >= 1 }
+		distance = { min = 10 max = @distance }
+		initializer = "sol_neighbor_t1_first_colony"
+	}
+	neighbor_system = {
+		trigger = { num_guaranteed_colonies = 0 }
+		distance = { min = 10 max = @distance }
+		initializer = "sol_neighbor_t1_no_guaranteed_colony"
+	}
+	neighbor_system = {
+		distance = { min = 50 max = 60 }
 		initializer = "sol_with_deneb_system_initializer"
 	}
 }
@@ -1398,14 +1248,19 @@ space_age_sol_system_initializer = {
 ### Sol System
 primitive_sol_system_initializer = {
 	name = "NAME_Sol"
-	
+
 	class = "sc_g"
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 145
 	}
+	asteroid_belt = {
+		type = icy_asteroid_belt
+		radius = 290
+	}
+
 	flags = { empire_home_system sol_system sol }
-	
+
 	usage = custom_empire
 
 	init_effect = {
@@ -1416,7 +1271,7 @@ primitive_sol_system_initializer = {
 			}
 		}
 	}
-	
+
 	planet = {
 		name = "NAME_Sol"
 		class = "pc_g_star"
@@ -1425,7 +1280,7 @@ primitive_sol_system_initializer = {
 		size = 30
 		has_ring = no
 	}
-	
+
 	planet = {
 		class = "pc_molten"
 		orbit_distance = 40
@@ -1433,7 +1288,7 @@ primitive_sol_system_initializer = {
 		size = 10
 		has_ring = no
 	}
-	
+
 	planet = {
 		class = "pc_toxic"
 		orbit_distance = 25
@@ -1441,7 +1296,7 @@ primitive_sol_system_initializer = {
 		size = 20
 		has_ring = no
 	}
-	
+
 	planet = {
 		class = "pc_continental"
 		orbit_distance = 25
@@ -1453,11 +1308,11 @@ primitive_sol_system_initializer = {
 		tile_blockers = none
 		modifiers = none
 		flags = { planet_earth }
-		
+
 		init_effect = {
 			prevent_anomaly = yes
 		}
-		
+
 		init_effect = {
 			if = {
 				limit = { NOT = { any_country = { has_country_flag = human_1 } } }
@@ -1479,6 +1334,7 @@ primitive_sol_system_initializer = {
 						create_country = {
 							name = random
 							authority = random
+							day_zero_contact = no
 							civics = {
 								civic = civic_increasing_urbanization
 								civic = civic_atmospheric_pollution
@@ -1512,43 +1368,10 @@ primitive_sol_system_initializer = {
 							set_country_flag = humans_early_space_age
 							set_primitive_age = early_space_age
 						}
-						create_colony = {
-							owner = last_created_country
-							species = last_created
-							ethos = {
-								ethic = "ethic_xenophile"
-								ethic = "ethic_fanatic_egalitarian"			
-							}
-						}
-						every_tile = {
-							limit = {
-								has_blocker = yes
-							}
-							remove_blocker = yes
-						}
-						random_tile = {
-							limit = { has_building = "building_colony_shelter" }
-							remove_building = yes
-						}
-						while = {
-							count = 3			
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_building = no
-									has_grown_pop = no
-								}
-								set_blocker = tb_decrepit_dwellings
-							}
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_building = no
-									has_grown_pop = no
-								}
-								set_blocker = tb_failing_infrastructure		
-							}				
-						}					
+						set_owner = last_created_country
+
+						create_primitive_blockers = yes
+						
 						create_army = {
 							name = "US Armed Forces West"
 							owner = last_created
@@ -1591,47 +1414,23 @@ primitive_sol_system_initializer = {
 							}
 						}
 						while = {
-							count = 7
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_grown_pop = no
-									has_growing_pop = no
-								}
-								create_pop = {
-									species = last_created
-								}
-							}
+							count = 15
+							create_pop = {
+								species = last_created
+							}					
 						}
-						while = {
-							count = 4
-							random_tile = {
-								limit = { 
-									has_blocker = no 
-									has_building = no 
-									has_grown_pop = yes
-								}
-								set_building = "building_primitive_factory"
-								set_deposit = d_mineral_deposit
-							}
-						}
-						while = {
-							count = 4
-							random_tile = {
-								limit = { 
-									has_blocker = no 
-									has_building = no 
-									has_grown_pop = yes
-								}
-								set_building = "building_primitive_farm"
-								set_deposit = d_farmland_deposit
-							}
-						}
+						add_building = building_primitive_farm
+						add_building = building_primitive_factory
+						add_building = building_primitive_mine
+						add_building = building_primitive_power_plant
+						add_building = building_primitive_capital
+						add_building = building_urban_dwellings
+		
 						last_created_country = {
-							capital_scope = { set_name = "NAME_Sol_III" }
-						}
+							capital_scope = { set_name = "Sol III" }
+						}			
 					}
-					# Machine Age
+					# Industrial Age
 					25 = {
 						create_species = {
 							name = Human
@@ -1682,39 +1481,23 @@ primitive_sol_system_initializer = {
 							set_country_flag = humans_machine_age
 							set_primitive_age = machine_age
 						}
-						create_colony = {
-							owner = last_created_country
-							species = last_created
-							ethos = { 
-								ethic = "ethic_materialist"
-								ethic = "ethic_fanatic_militarist"
-							}
-						}
-						every_tile = {
-							limit = {
-								has_blocker = yes
-							}
-							remove_blocker = yes
-						}
+						set_owner = last_created_country
+						
+						create_primitive_blockers = yes
+		
 						while = {
-							count = 3			
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_building = no
-									has_grown_pop = no
-								}
-								set_blocker = tb_decrepit_dwellings
-							}
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_building = no
-									has_grown_pop = no
-								}
-								set_blocker = tb_failing_infrastructure		
-							}				
-						}					
+							count = 10
+							create_pop = {
+								species = last_created
+							}					
+						}
+						add_building = building_primitive_farm
+						add_building = building_primitive_factory
+						add_building = building_primitive_mine
+						add_building = building_primitive_power_plant
+						add_building = building_primitive_capital
+						add_building = building_urban_dwellings
+						
 						create_army = {
 							name = "NAME_German_Wehrmacht"
 							owner = last_created
@@ -1745,47 +1528,7 @@ primitive_sol_system_initializer = {
 							species = last_created
 							type = "industrial_army"
 						}
-						while = {
-							count = 6
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_grown_pop = no
-									has_growing_pop = no
-								}
-								create_pop = {
-									species = last_created
-								}
-							}
-						}
-						random_tile = {
-							limit = { has_building = "building_colony_shelter" }
-							remove_building = yes
-						}				
-						while = {
-							count = 3
-							random_tile = {
-								limit = { 
-									has_blocker = no 
-									has_building = no 
-									has_grown_pop = yes
-								}
-								set_building = "building_primitive_factory"
-								set_deposit = d_mineral_deposit
-							}
-						}
-						while = {
-							count = 4
-							random_tile = {
-								limit = { 
-									has_blocker = no 
-									has_building = no 
-									has_grown_pop = yes
-								}
-								set_building = "building_primitive_farm"
-								set_deposit = d_farmland_deposit						
-							}
-						}
+						
 						last_created_country = {
 							capital_scope = { set_name = "NAME_Sol_III" }
 						}
@@ -1812,7 +1555,11 @@ primitive_sol_system_initializer = {
 								civic = civic_flat_world_theory
 							}
 							species = last_created
-							ethos = random
+							ethos = { 
+								ethic = "ethic_xenophobe"
+								ethic = "ethic_spiritualist"
+								ethic = "ethic_authoritarian"
+							}
 							flag = {
 								icon = {
 									category = "ornate"
@@ -1838,15 +1585,19 @@ primitive_sol_system_initializer = {
 							set_country_flag = humans_late_medieval_age
 							set_primitive_age = late_medieval_age
 						}
-						create_colony = {
-							owner = last_created_country
-							species = last_created
-							ethos = { 
-								ethic = "ethic_xenophobe"
-								ethic = "ethic_spiritualist"
-								ethic = "ethic_authoritarian"
-							}
+						
+						set_owner = last_created_country		
+											
+						while = {
+							count = 10
+							create_pop = {
+								species = last_created
+							}					
 						}
+						add_building = building_primitive_dwellings
+						add_building = building_primitive_dwellings
+						add_building = building_stone_palace			
+						
 						while = {
 							count = 3
 							create_army = {
@@ -1856,35 +1607,7 @@ primitive_sol_system_initializer = {
 								type = "primitive_army"
 							}
 						}
-						random_tile = {
-							limit = { has_building = "building_colony_shelter" }
-							remove_building = yes
-						}					
-						while = {
-							count = 3
-							random_tile = {
-								limit = {
-									has_blocker = no
-									has_grown_pop = no
-									has_growing_pop = no
-								}
-								create_pop = {
-									species = last_created
-								}
-							}
-						}
-						while = {
-							count = 4
-							random_tile = {
-								limit = { 
-									has_blocker = no 
-									has_building = no 
-									has_grown_pop = yes
-								}
-								set_building = "building_primitive_farm"
-								set_deposit = d_farmland_deposit
-							}
-						}
+						
 						last_created_country = {
 							capital_scope = { set_name = "NAME_Sol_III" }
 						}
@@ -1892,7 +1615,7 @@ primitive_sol_system_initializer = {
 				}
 			}
 		}
-		
+
 		moon = {
 			class = "pc_barren_cold"
 			size = 5
@@ -1902,7 +1625,7 @@ primitive_sol_system_initializer = {
 			entity = "cold_barren_planet_luna_entity"
 		}
 	}
-	
+
 	planet = {
 		class = "pc_barren"
 		orbit_distance = 25
@@ -1912,7 +1635,7 @@ primitive_sol_system_initializer = {
 		entity = "barren_planet_mars_entity"
 		anomaly = "terraforming_candidate_category"
 	}
-	
+
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 30
@@ -1920,7 +1643,7 @@ primitive_sol_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -1928,7 +1651,7 @@ primitive_sol_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -1936,7 +1659,7 @@ primitive_sol_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		class = "pc_asteroid"
 		orbit_distance = 0
@@ -1944,7 +1667,7 @@ primitive_sol_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		class = "pc_gas_giant"
 		orbit_distance = 40
@@ -1953,7 +1676,7 @@ primitive_sol_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_jupiter_entity"
 		change_orbit = 6
-		
+
 		moon = {
 			class = "pc_molten"
 			size = 6
@@ -1983,7 +1706,7 @@ primitive_sol_system_initializer = {
 			has_ring = no
 		}
 	}
-	
+
 	planet = {
 		class = "pc_gas_giant"
 		orbit_distance = 25
@@ -1992,7 +1715,7 @@ primitive_sol_system_initializer = {
 		has_ring = yes
 		entity = "gas_giant_05_entity"
 		change_orbit = 7
-		
+
 		moon = {
 			class = "pc_frozen"
 			size = 8
@@ -2001,7 +1724,7 @@ primitive_sol_system_initializer = {
 			has_ring = no
 		}
 	}
-	
+
 	planet = {
 		class = "pc_gas_giant"
 		orbit_distance = 25
@@ -2010,7 +1733,7 @@ primitive_sol_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_03_entity"
 	}
-	
+
 	planet = {
 		class = "pc_gas_giant"
 		orbit_distance = 25
@@ -2019,7 +1742,7 @@ primitive_sol_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_02_entity"
 		change_orbit = 4
-		
+
 		moon = {
 			class = "pc_frozen"
 			size = 6
@@ -2028,14 +1751,52 @@ primitive_sol_system_initializer = {
 			has_ring = no
 		}
 	}
-	
+
+	planet = {
+		class = "pc_asteroid"
+		orbit_distance = 30
+		orbit_angle = -210
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		class = "pc_ice_asteroid"
+		orbit_distance = 0
+		orbit_angle = -95
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		class = "pc_ice_asteroid"
+		orbit_distance = 0
+		orbit_angle = 285
+		size = 5
+		has_ring = no
+	}
+
+	planet = {
+		class = "pc_ice_asteroid"
+		orbit_distance = 0
+		orbit_angle = -80
+		size = 5
+		has_ring = no
+	}
+
 	neighbor_system = {
-		distance = { min = 10 max = @distance }	
+		distance = { min = 10 max = @distance }
+		initializer = "sol_neighbor_t1"
+	}
+	neighbor_system = {
+		trigger = { num_guaranteed_colonies >= 1 }
+		distance = { min = 10 max = @distance }
 		initializer = "sol_neighbor_t1_first_colony"
 	}
 	neighbor_system = {
-		distance = { min = 10 max = @distance }	
-		initializer = "sol_neighbor_t1"
+		trigger = { num_guaranteed_colonies = 0 }
+		distance = { min = 10 max = @distance }
+		initializer = "sol_neighbor_t1_no_guaranteed_colony"
 	}
 	neighbor_system = {
 		distance = { min = 50 max = 60 }
@@ -2059,14 +1820,14 @@ sol_with_deneb_system_initializer = {
 				set_star_flag = empire_cluster
 			}
 		}
-		
+
 		generate_home_system_resources = yes
 	}
 
 	flags = { empire_home_system deneb_system }
-	
+
 	usage = custom_empire
-	
+
 	planet = {
 		name = "NAME_Deneb"
 		class = "pc_a_star"
@@ -2085,7 +1846,7 @@ sol_with_deneb_system_initializer = {
 		has_ring = no
 		flags = { planet_inferno }
 	}
-	
+
 	planet = {
 		name = "NAME_DT4-298"
 		class = "pc_asteroid"
@@ -2094,7 +1855,7 @@ sol_with_deneb_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_LR-2129"
 		class = "pc_asteroid"
@@ -2103,7 +1864,7 @@ sol_with_deneb_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_GR-345"
 		class = "pc_asteroid"
@@ -2112,7 +1873,7 @@ sol_with_deneb_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_Olympus"
 		class = "pc_gas_giant"
@@ -2122,7 +1883,7 @@ sol_with_deneb_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_02_entity"
 		flags = { planet_olympus }
-		
+
 		moon = {
 			name = "NAME_New_Luna"
 			class = "pc_frozen"
@@ -2141,21 +1902,21 @@ sol_with_deneb_system_initializer = {
 			size = 18
 			starting_planet = yes
 			has_ring = no
-			entity = "continental_planet_01_entity"	
-			tile_blockers = none
+			entity = "continental_planet_01_entity"
 			modifiers = modifier_unity
 			flags = { planet_unity }
-			
+
 			init_effect = {
 				prevent_anomaly = yes
 			}
-		
+
 			init_effect = {
 				if = {
 					limit = { NOT = { any_country = { has_country_flag = human_2 } } }
 					random_list = {
 						# Space Age
 						90 = {
+							generate_empire_home_planet = yes
 							create_species = {
 								name = Human
 								plural = Humans
@@ -2164,27 +1925,27 @@ sol_with_deneb_system_initializer = {
 								homeworld = THIS
 								traits = {
 									trait = "trait_adaptive"
-									trait = "trait_nomadic"	
+									trait = "trait_nomadic"
 									trait = "trait_wasteful"
 								}
 							}
 							create_country = {
 								name = "Commonwealth of Man"
 								name_list = "HUMAN2"
-			
+
 								room = "personality_hegemonic_imperialists_room"
-	
+
 								authority = "auth_dictatorial"
 								civics = {
 									civic = civic_nationalistic_zeal
 									civic = civic_distinguished_admiralty
-								}								
+								}
 								government = gov_military_dictatorship
-								
+
 								species = last_created
 								ethos = {
 									ethic = "ethic_xenophobe"
-									ethic = "ethic_fanatic_militarist"			
+									ethic = "ethic_fanatic_militarist"
 								}
 
 								flags = { human_2 }
@@ -2206,6 +1967,16 @@ sol_with_deneb_system_initializer = {
 									}
 								}
 								type = default
+								effect = {
+									add_resource = {
+										minerals = 200
+										energy = 200
+										food = 200
+										alloys = 100
+										consumer_goods = 100
+										influence = 100
+									}
+								}
 							}
 							last_created_country = {
 								set_graphical_culture = humanoid_01
@@ -2213,55 +1984,40 @@ sol_with_deneb_system_initializer = {
 								set_country_flag = human_2_starbase
 								save_global_event_target_as = CoE
 							}
+
+							while = {
+								count = 25
+								create_pop = {
+									species = last_created
+								}
+							}
+							set_owner = last_created_country
+							set_capital = yes
+							add_district = district_city
+							add_district = district_city
+							add_district = district_city
+							add_district = district_city
+							add_district = district_farming
+							add_district = district_farming
+							add_district = district_farming
+							add_district = district_mining
+							add_district = district_mining
+							add_district = district_generator
+							add_district = district_generator
+							add_building = building_capital
+							add_building = building_research_lab_1
+							add_building = building_foundry_1
+							add_building = building_factory_1
+
 							create_colony = {
 								owner = last_created_country
 								species = last_created
 								ethos = {
 									ethic = "ethic_xenophobe"
-									ethic = "ethic_fanatic_militarist"			
+									ethic = "ethic_fanatic_militarist"
 								}
 							}
-							every_tile = {
-								limit = {
-									has_blocker = yes
-								}
-								remove_blocker = yes
-							}
-							random_tile = {
-								limit = { has_building = "building_colony_shelter" }
-								remove_building = yes
-							}				
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_blocker = "tb_failing_infrastructure"
-								set_deposit = d_engineering_deposit			
-							}
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_blocker = "tb_failing_infrastructure"
-								set_deposit = d_society_deposit			
-							}
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_blocker = "tb_failing_infrastructure"
-								set_deposit = d_physics_deposit			
-							}
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_blocker = "tb_decrepit_dwellings"
-								set_deposit = d_rich_energy_deposit				
-							}
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_blocker = "tb_decrepit_dwellings"
-								set_deposit = d_rich_farmland_deposit				
-							}
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_blocker = "tb_decrepit_dwellings"
-								set_deposit = d_rich_mineral_deposit			
-							}
-											
+
 							create_army = {
 								name = "1st Colonial Garrison"
 								owner = last_created
@@ -2353,74 +2109,7 @@ sol_with_deneb_system_initializer = {
 									}
 								}
 							}
-
-							random_tile = {
-								limit = { has_blocker = no has_building = no num_adjacent_tiles > 3 }
-								set_building = "building_capital_1"
-								set_deposit = d_energy_deposit				
-								random_neighboring_tile = {					
-								}		
-							}
-
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_building = "building_hydroponics_farm_1"
-								set_deposit = d_rich_farmland_deposit
-							}
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_building = "building_hydroponics_farm_1"
-								set_deposit = d_rich_farmland_deposit						
-							}
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_building = "building_power_plant_1"
-								set_deposit = d_rich_energy_deposit					
-							}
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_building = "building_power_plant_1"
-								set_deposit = d_rich_energy_deposit					
-							}
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_building = "building_mining_network_1"
-								set_deposit = d_rich_mineral_deposit
-							}	
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_building = "building_mining_network_1"
-								set_deposit = d_rich_mineral_deposit
-							}
-
-							random_tile = {
-								limit = { has_blocker = no has_building = no }
-								set_building = "building_basic_science_lab_1"
-								random_list = {
-									33 = { 
-										set_deposit = d_engineering_deposit										
-									}
-									33 = { 
-										set_deposit = d_society_deposit											
-									}
-									33 = { 
-										set_deposit = d_physics_deposit											
-									}					
-								}					
-							}
-							while = {
-								count = 8
-								random_tile = {
-									limit = {
-										has_building = yes
-										has_grown_pop = no
-										has_growing_pop = no
-									}
-									create_pop = {
-										species = last_created
-									}
-								}
-							}
+							
 							last_created_country = {
 								capital_scope = { set_name = "Aurora" }
 							}
@@ -2431,9 +2120,9 @@ sol_with_deneb_system_initializer = {
 					}
 				}
 			}
-		}		
+		}
 	}
-	
+
 	planet = {
 		name = "NAME_Marble"
 		class = "pc_barren_cold"
@@ -2443,7 +2132,7 @@ sol_with_deneb_system_initializer = {
 		has_ring = no
 		flags = { planet_marble }
 	}
-	
+
 	planet = {
 		name = "NAME_Hyperion"
 		class = "pc_gas_giant"
@@ -2453,7 +2142,7 @@ sol_with_deneb_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_05_entity"
 		flags = { planet_hyperion }
-		
+
 		moon = {
 			name = "NAME_Helios"
 			class = "pc_frozen"
@@ -2464,7 +2153,7 @@ sol_with_deneb_system_initializer = {
 			flags = { planet_helios }
 		}
 	}
-	
+
 	planet = {
 		name = "NAME_Tumbleweed"
 		class = "pc_barren"
@@ -2474,7 +2163,7 @@ sol_with_deneb_system_initializer = {
 		has_ring = no
 		flags = { planet_tumbleweed }
 	}
-	
+
 	planet = {
 		name = "NAME_Jackson's_Planet"
 		class = "pc_frozen"
@@ -2496,19 +2185,19 @@ sol_with_deneb_system_initializer = {
 			}
 		}
 	}
-	
+
 	neighbor_system = {
 		distance = { min = 10 max = @distance }
 		trigger = {#scope = galactic_object ( parent ). root = root gal obj. from = closest parent. from from = grand parent...
 			#want this?
-		}		
+		}
 		initializer = "neighbor_t1"
 	}
 	neighbor_system = {
 		distance = { min = 10 max = @distance }
 		trigger = {#scope = galactic_object ( parent ). root = root gal obj. from = closest parent. from from = grand parent...
 			#want this?
-		}		
+		}
 		initializer = "neighbor_t1_first_colony"
 	}
 }
@@ -2532,9 +2221,9 @@ uncolonized_deneb_system_initializer = {
 	}
 
 	flags = { empire_home_system deneb_system }
-	
+
 	usage = custom_empire
-	
+
 	planet = {
 		class = "pc_a_star"
 		orbit_distance = 0
@@ -2551,7 +2240,7 @@ uncolonized_deneb_system_initializer = {
 		has_ring = no
 		flags = { planet_inferno }
 	}
-	
+
 	planet = {
 		name = "NAME_DT4-298"
 		class = "pc_asteroid"
@@ -2560,7 +2249,7 @@ uncolonized_deneb_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_LR-2129"
 		class = "pc_asteroid"
@@ -2569,7 +2258,7 @@ uncolonized_deneb_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		name = "NAME_GR-345"
 		class = "pc_asteroid"
@@ -2578,7 +2267,7 @@ uncolonized_deneb_system_initializer = {
 		size = 5
 		has_ring = no
 	}
-	
+
 	planet = {
 		class = "pc_gas_giant"
 		orbit_distance = 30
@@ -2587,7 +2276,7 @@ uncolonized_deneb_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_02_entity"
 		flags = { planet_olympus }
-		
+
 		moon = {
 			class = "pc_frozen"
 			size = 5
@@ -2604,17 +2293,17 @@ uncolonized_deneb_system_initializer = {
 			size = 18
 			starting_planet = yes
 			has_ring = no
-			entity = "continental_planet_01_entity"	
+			entity = "continental_planet_01_entity"
 			tile_blockers = none
 			modifiers = modifier_unity
 			flags = { planet_unity }
-			
+
 			init_effect = {
 				prevent_anomaly = yes
 			}
-		}		
+		}
 	}
-	
+
 	planet = {
 		class = "pc_barren_cold"
 		orbit_distance = 20
@@ -2623,7 +2312,7 @@ uncolonized_deneb_system_initializer = {
 		has_ring = no
 		flags = { planet_marble }
 	}
-	
+
 	planet = {
 		class = "pc_gas_giant"
 		orbit_distance = 20
@@ -2632,7 +2321,7 @@ uncolonized_deneb_system_initializer = {
 		has_ring = no
 		entity = "gas_giant_05_entity"
 		flags = { planet_hyperion }
-		
+
 		moon = {
 			class = "pc_frozen"
 			size = 8
@@ -2642,7 +2331,7 @@ uncolonized_deneb_system_initializer = {
 			flags = { planet_helios }
 		}
 	}
-	
+
 	planet = {
 		class = "pc_barren"
 		orbit_distance = 20
@@ -2651,7 +2340,7 @@ uncolonized_deneb_system_initializer = {
 		has_ring = no
 		flags = { planet_tumbleweed }
 	}
-	
+
 	planet = {
 		class = "pc_frozen"
 		orbit_distance = 20
@@ -2660,19 +2349,19 @@ uncolonized_deneb_system_initializer = {
 		has_ring = no
 		flags = { planet_jackson_s_planet }
 	}
-	
+
 	neighbor_system = {
 		distance = { min = 10 max = @distance }
 		trigger = {#scope = galactic_object ( parent ). root = root gal obj. from = closest parent. from from = grand parent...
 			#want this?
-		}		
+		}
 		initializer = "neighbor_t1"
 	}
 	neighbor_system = {
 		distance = { min = 10 max = @distance }
 		trigger = {#scope = galactic_object ( parent ). root = root gal obj. from = closest parent. from from = grand parent...
 			#want this?
-		}		
+		}
 		initializer = "neighbor_t1_first_colony"
 	}
 }
