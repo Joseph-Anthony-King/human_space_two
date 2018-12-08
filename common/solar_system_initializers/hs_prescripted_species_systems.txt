@@ -12,7 +12,7 @@ deneb_with_sol_system_initializer = {
 	}
 	asteroid_belt = {
 		type = icy_asteroid_belt
-		radius = 290
+		radius = 297
 	}
 
 	flags = { empire_home_system sol_system sol }
@@ -73,7 +73,7 @@ deneb_with_sol_system_initializer = {
 		init_effect = {
 			prevent_anomaly = yes
 		}
-
+		
 		init_effect = {
 			if = {
 				limit = { NOT = { any_country = { has_country_flag = human_1 } } }
@@ -146,7 +146,7 @@ deneb_with_sol_system_initializer = {
 						}
 
 						while = {
-							count = 23
+							count = 25
 							create_pop = {
 								species = last_created
 							}
@@ -192,24 +192,6 @@ deneb_with_sol_system_initializer = {
 						}
 						create_army = {
 							name = "2nd Planetary Guard"
-							owner = last_created
-							species = last_created
-							type = "defense_army"
-						}
-						create_army = {
-							name = "3rd Planetary Guard"
-							owner = last_created
-							species = last_created
-							type = "defense_army"
-						}
-						create_army = {
-							name = "4th Planetary Guard"
-							owner = last_created
-							species = last_created
-							type = "defense_army"
-						}
-						create_army = {
-							name = "5th Planetary Guard"
 							owner = last_created
 							species = last_created
 							type = "defense_army"
@@ -347,13 +329,7 @@ deneb_with_sol_system_initializer = {
 						create_primitive_blockers = yes
 
 						create_army = {
-							name = "US Armed Forces West"
-							owner = last_created
-							species = last_created
-							type = "postatomic_army"
-						}
-						create_army = {
-							name = "US Armed Forces East"
+							name = "US Armed Forces"
 							owner = last_created
 							species = last_created
 							type = "postatomic_army"
@@ -632,7 +608,7 @@ space_age_sol_system_initializer = {
 	}
 	asteroid_belt = {
 		type = icy_asteroid_belt
-		radius = 290
+		radius = 297
 	}
 
 	flags = { empire_home_system sol_system sol }
@@ -772,7 +748,7 @@ space_age_sol_system_initializer = {
 						}
 
 						while = {
-							count = 23
+							count = 25
 							create_pop = {
 								species = event_target:human_species
 							}
@@ -812,24 +788,6 @@ space_age_sol_system_initializer = {
 						}
 						create_army = {
 							name = "2nd Planetary Guard"
-							owner = last_created
-							species = last_created
-							type = "defense_army"
-						}
-						create_army = {
-							name = "3rd Planetary Guard"
-							owner = last_created
-							species = last_created
-							type = "defense_army"
-						}
-						create_army = {
-							name = "4th Planetary Guard"
-							owner = last_created
-							species = last_created
-							type = "defense_army"
-						}
-						create_army = {
-							name = "5th Planetary Guard"
 							owner = last_created
 							species = last_created
 							type = "defense_army"
@@ -960,13 +918,7 @@ space_age_sol_system_initializer = {
 						create_primitive_blockers = yes
 
 						create_army = {
-							name = "US Armed Forces West"
-							owner = last_created
-							species = last_created
-							type = "postatomic_army"
-						}
-						create_army = {
-							name = "US Armed Forces East"
+							name = "US Armed Forces"
 							owner = last_created
 							species = last_created
 							type = "postatomic_army"
@@ -1256,7 +1208,7 @@ primitive_sol_system_initializer = {
 	}
 	asteroid_belt = {
 		type = icy_asteroid_belt
-		radius = 290
+		radius = 297
 	}
 
 	flags = { empire_home_system sol_system sol }
@@ -1312,7 +1264,7 @@ primitive_sol_system_initializer = {
 		init_effect = {
 			prevent_anomaly = yes
 		}
-
+		
 		init_effect = {
 			if = {
 				limit = { NOT = { any_country = { has_country_flag = human_1 } } }
@@ -1373,13 +1325,7 @@ primitive_sol_system_initializer = {
 						create_primitive_blockers = yes
 						
 						create_army = {
-							name = "US Armed Forces West"
-							owner = last_created
-							species = last_created
-							type = "postatomic_army"
-						}
-						create_army = {
-							name = "US Armed Forces East"
+							name = "US Armed Forces"
 							owner = last_created
 							species = last_created
 							type = "postatomic_army"
@@ -1589,7 +1535,7 @@ primitive_sol_system_initializer = {
 						set_owner = last_created_country		
 											
 						while = {
-							count = 10
+							count = 3
 							create_pop = {
 								species = last_created
 							}					
@@ -1932,23 +1878,23 @@ sol_with_deneb_system_initializer = {
 							create_country = {
 								name = "Commonwealth of Man"
 								name_list = "HUMAN2"
-
+			
 								room = "personality_hegemonic_imperialists_room"
 
-								authority = "auth_dictatorial"
-								civics = {
-									civic = civic_nationalistic_zeal
-									civic = civic_distinguished_admiralty
-								}
-								government = gov_military_dictatorship
+								ship_prefix = "CAS"
 
+								authority = "auth_oligarchic"
+								civics = {
+									civic = civic_meritocracy
+									civic = civic_citizen_service
+								}							
+								government = gov_citizen_stratocracy
+								
 								species = last_created
 								ethos = {
-									ethic = "ethic_xenophobe"
-									ethic = "ethic_fanatic_militarist"
+									ethic = "ethic_militarist"
+									ethic = "ethic_fanatic_materialist"			
 								}
-
-								flags = { human_2 }
 
 								flag = {
 									icon= {
@@ -1967,16 +1913,6 @@ sol_with_deneb_system_initializer = {
 									}
 								}
 								type = default
-								effect = {
-									add_resource = {
-										minerals = 200
-										energy = 200
-										food = 200
-										alloys = 100
-										consumer_goods = 100
-										influence = 100
-									}
-								}
 							}
 							last_created_country = {
 								set_graphical_culture = humanoid_01
@@ -2019,31 +1955,13 @@ sol_with_deneb_system_initializer = {
 							}
 
 							create_army = {
-								name = "1st Colonial Garrison"
+								name = "1st Colonial Gendarmerie"
 								owner = last_created
 								species = last_created
 								type = "defense_army"
 							}
 							create_army = {
-								name = "2nd Colonial Garrison"
-								owner = last_created
-								species = last_created
-								type = "defense_army"
-							}
-							create_army = {
-								name = "3rd Colonial Garrison"
-								owner = last_created
-								species = last_created
-								type = "defense_army"
-							}
-							create_army = {
-								name = "4th Colonial Garrison"
-								owner = last_created
-								species = last_created
-								type = "defense_army"
-							}
-							create_army = {
-								name = "5th Colonial Garrison"
+								name = "2nd Colonial Gendarmerie"
 								owner = last_created
 								species = last_created
 								type = "defense_army"
