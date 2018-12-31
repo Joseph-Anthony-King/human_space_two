@@ -2029,7 +2029,7 @@ sol_with_deneb_system_initializer = {
 							}
 							
 							last_created_country = {
-								capital_scope = { set_name = "Aurora" }
+								capital_scope = { set_name = "Unity" }
 							}
 						}
 						# Earth Nuclear Wasteland
