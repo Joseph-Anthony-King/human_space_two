@@ -26,6 +26,30 @@ event = {
 	is_triggered_only = yes
 
 	immediate = {
+		
+		every_system = {
+            #limit = {
+            #    AND = {
+            #        NOT = { any_country = { has_country_flag = human_2 } }
+            #        any_country = { has_country_flag = human_1 }
+            #        has_star_flag = deneb_system_target
+            #    }                
+            #}
+            limit = {
+                has_star_flag = deneb_system_target              
+            }
+
+            spawn_system = { initializer = "sol_with_deneb_system_initializer" }
+        }
+    }
+}
+
+event = {
+	id = hs.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
 
         random_planet = {
             limit = {
@@ -129,7 +153,7 @@ event = {
 }
 
 event = {
-	id = hs.3
+	id = hs.4
 	hide_window = yes
 	is_triggered_only = yes
 
