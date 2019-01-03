@@ -1881,12 +1881,12 @@ sol_with_deneb_system_initializer = {
 
 								ship_prefix = "CAS"
 
-								authority = "auth_oligarchic"
+								authority = "auth_dictatorial"
 								civics = {
-									civic = civic_meritocracy
-									civic = civic_citizen_service
+									civic = civic_nationalistic_zeal
+									civic = civic_distinguished_admiralty
 								}							
-								government = gov_citizen_stratocracy
+								government = gov_military_dictatorship
 								
 								species = event_target:human_species
 								ethos = {
