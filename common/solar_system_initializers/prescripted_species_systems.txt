@@ -278,16 +278,13 @@ sol_system_initializer = {
 		initializer = "sol_neighbor_t1_first_colony"
 	}
 	neighbor_system = {
+		distance = { min = 10 max = @distance }
+		initializer = "sol_with_deneb_system_target_initializer"
+	}
+	neighbor_system = {
 		trigger = { num_guaranteed_colonies = 0 }
 		distance = { min = 10 max = @distance }
 		initializer = "sol_neighbor_t1_no_guaranteed_colony"
-	}
-	neighbor_system = {
-		distance = { min = 50 max = 60 }
-		trigger = {#scope = galactic_object ( parent ). root = root gal obj. from = closest parent. from from = grand parent...
-			#want this?
-		}
-		initializer = "sol_with_deneb_system_target_initializer"
 	}
 }
 
@@ -589,6 +586,8 @@ sol_neighbor_t2 = {
 		type = rocky_asteroid_belt
 		radius = 120
 	}
+	
+	flags = { deneb_system_target }
 
 	init_effect = {
 		every_neighbor_system = {
