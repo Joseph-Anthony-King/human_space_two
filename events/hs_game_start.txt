@@ -28,15 +28,12 @@ event = {
 	immediate = {
 		
 		every_system = {
-            #limit = {
-            #    AND = {
-            #        NOT = { any_country = { has_country_flag = human_2 } }
-            #        any_country = { has_country_flag = human_1 }
-            #        has_star_flag = deneb_system_target
-            #    }                
-            #}
             limit = {
-                has_star_flag = deneb_system_target              
+                AND = {
+                    NOT = { any_country = { has_country_flag = human_2 } }
+                    any_country = { has_country_flag = human_1 }
+                    has_star_flag = deneb_system_target
+                }                
             }
 
             spawn_system = { initializer = "sol_with_deneb_system_initializer" }
