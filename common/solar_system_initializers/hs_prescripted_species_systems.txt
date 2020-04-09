@@ -294,7 +294,13 @@ deneb_with_sol_system_initializer = {
 		size = 13
 		has_ring = no
 		entity = "barren_planet_mars_entity"
-		anomaly = "terraforming_candidate_category"
+		
+		init_effect = {
+			add_modifier = {
+				modifier = "terraforming_candidate"
+				days = -1
+			}
+		}
 	}
 
 	planet = {
@@ -890,7 +896,13 @@ space_age_sol_system_initializer = {
 		size = 13
 		has_ring = no
 		entity = "barren_planet_mars_entity"
-		anomaly = "terraforming_candidate_category"
+		
+		init_effect = {
+			add_modifier = {
+				modifier = "terraforming_candidate"
+				days = -1
+			}
+		}
 	}
 
 	planet = {
