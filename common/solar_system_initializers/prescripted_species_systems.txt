@@ -2,6 +2,7 @@
 @distance = 50
 @base_moon_distance = 10
 @jumps = 3
+<<<<<<< HEAD
 
 ### Deneb System
 deneb_system = {
@@ -168,6 +169,8 @@ deneb_system = {
 		initializer = "neighbor_t1_first_colony"
 	}
 }
+=======
+>>>>>>> dev
 
 ### Deneb System - UNE start
 une_deneb_system = {

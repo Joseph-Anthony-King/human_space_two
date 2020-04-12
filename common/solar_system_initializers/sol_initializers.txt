@@ -99,7 +99,11 @@ sol_system_initializer = {
 				modifier = "terraforming_candidate"
 				days = -1
 			}
+<<<<<<< HEAD
 		}
+=======
+		}		
+>>>>>>> dev
 	}
 	
 	planet = {
@@ -196,8 +200,13 @@ sol_system_initializer = {
 			name = "NAME_Titan"
 			class = "pc_frozen"
 			size = 8
+<<<<<<< HEAD
 			orbit_distance = 10
 			orbit_angle = 180
+=======
+			orbit_distance = 12
+			orbit_angle = 320
+>>>>>>> dev
 			has_ring = no
 		}
 	}
@@ -209,6 +218,10 @@ sol_system_initializer = {
 		orbit_angle = 125
 		size = 20
 		has_ring = no
+<<<<<<< HEAD
+=======
+		entity = "gas_giant_03_entity"
+>>>>>>> dev
 	}
 	
 	planet = {
@@ -218,6 +231,10 @@ sol_system_initializer = {
 		orbit_angle = -195
 		size = 20
 		has_ring = no
+<<<<<<< HEAD
+=======
+		entity = "gas_giant_02_entity"
+>>>>>>> dev
 		change_orbit = 4
 		
 		moon = {
@@ -569,6 +586,11 @@ sol_neighbor_t2 = {
 		type = rocky_asteroid_belt
 		radius = 120
 	}
+<<<<<<< HEAD
+=======
+	
+	flags = { deneb_system_target }
+>>>>>>> dev
 
 	init_effect = {
 		every_neighbor_system = { set_star_flag = empire_cluster }
@@ -1055,8 +1077,13 @@ com_sol_system = {
 			name = "NAME_Titan"
 			class = "pc_frozen"
 			size = 8
+<<<<<<< HEAD
 			orbit_distance = 10
 			orbit_angle = 180
+=======
+			orbit_distance = 12
+			orbit_angle = 320
+>>>>>>> dev
 			has_ring = no
 		}
 	}
@@ -1068,6 +1095,10 @@ com_sol_system = {
 		orbit_angle = 125
 		size = 20
 		has_ring = no
+<<<<<<< HEAD
+=======
+		entity = "gas_giant_03_entity"
+>>>>>>> dev
 	}
 	
 	planet = {
@@ -1077,6 +1108,10 @@ com_sol_system = {
 		orbit_angle = -195
 		size = 20
 		has_ring = no
+<<<<<<< HEAD
+=======
+		entity = "gas_giant_02_entity"
+>>>>>>> dev
 		change_orbit = 4
 		
 		moon = {
