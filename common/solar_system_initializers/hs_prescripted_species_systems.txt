@@ -1085,10 +1085,6 @@ space_age_sol_system_initializer = {
 		distance = { min = 10 max = @distance }
 		initializer = "sol_neighbor_t1_no_guaranteed_colony"
 	}
-	neighbor_system = {
-		distance = { min = 50 max = 60 }
-		initializer = "sol_with_deneb_system_target_initializer"
-	}
 }
 
 ### Sol System
