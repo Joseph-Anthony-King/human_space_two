@@ -1,18 +1,7 @@
-<<<<<<< HEAD
 name="Human Space! Part Deux"
 tags={
 	"Galaxy Generation"
 }
-=======
-version="1.0"
-tags={
-	"Galaxy Generation"
-	"Graphics"
-	"Species"
-	"Spaceships"
-}
-name="Human Space"
->>>>>>> dev
 picture="cover-image.jpg"
 supported_version="2.6.*"
 path="/home/joe/.local/share/Paradox Interactive/Stellaris/mod/human_space_two"
